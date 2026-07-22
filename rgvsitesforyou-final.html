@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RGV Sites For You</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --orange:#F26419;--od:#C14E0F;--ol:#FFF0E8;
+    --black:#0F0F0F;--white:#fff;--gray:#F5F4F2;--gm:#E8E6E2;
+    --muted:#888580;--body:#2C2A28;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;color:var(--body);background:var(--white);overflow-x:hidden}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:999;
+    height:64px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 2.5rem;
+    background:rgba(255,255,255,0.97);
+    border-bottom:1px solid var(--gm);
+    backdrop-filter:blur(12px);
+  }
+  .logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--black);text-decoration:none;cursor:pointer}
+  .logo span{color:var(--orange)}
+  .nav-links{display:flex;gap:4px;list-style:none}
+  .nav-links a{
+    display:block;padding:.45rem .85rem;border-radius:6px;
+    font-size:.85rem;font-weight:500;color:var(--muted);
+    text-decoration:none;transition:color .2s,background .2s;
+  }
+  .nav-links a:hover{color:var(--body);background:var(--gray)}
+  .nav-links a.active{color:var(--orange);background:var(--ol)}
+  .nav-cta{
+    background:var(--orange);color:#fff;border:none;
+    padding:.55rem 1.2rem;border-radius:6px;
+    font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;
+    cursor:pointer;text-decoration:none;transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--od)}
+  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--body);margin:4px 0;transition:.3s}
+  .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gm);padding:1rem 1.5rem;flex-direction:column;gap:.5rem;z-index:998}
+  .mobile-menu a{display:block;padding:.65rem .75rem;border-radius:6px;font-size:.95rem;font-weight:500;color:var(--body);text-decoration:none}
+  .mobile-menu a:hover{background:var(--gray)}
+  .mobile-menu.open{display:flex}
+
+  /* ── SHARED ── */
+  section{padding:5rem 2rem}
+  .inner{max-width:1080px;margin:0 auto}
+  .label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.65rem}
+  .big{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:var(--black);letter-spacing:-.5px;line-height:1.1;margin-bottom:1rem}
+  .sub{color:var(--muted);font-size:.975rem;line-height:1.75;max-width:540px}
+  .btn{display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:.925rem;border-radius:7px;text-decoration:none;padding:.8rem 1.65rem;transition:background .2s,transform .15s,color .2s,border-color .2s}
+  .btn-fill{background:var(--orange);color:#fff}
+  .btn-fill:hover{background:var(--od);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25)}
+  .btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
+  .btn-outline{background:transparent;color:var(--body);border:1.5px solid var(--gm)}
+  .btn-outline:hover{border-color:var(--orange);color:var(--orange)}
+
+  /* ── HERO ── */
+  #home{
+    min-height:100vh;background:var(--black);
+    display:flex;align-items:center;
+    padding:6rem 2rem 4rem;position:relative;overflow:hidden;
+  }
+  .hero-ghost{
+    position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
+    font-family:'Syne',sans-serif;font-size:20vw;font-weight:800;
+    color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(242,100,25,.14);border:1px solid rgba(242,100,25,.3);
+    color:var(--orange);font-size:.72rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;
+    padding:.38rem .8rem;border-radius:100px;margin-bottom:1.4rem;
+  }
+  .pill::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;animation:blink 2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero-inner h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:1.04;color:#fff;letter-spacing:-1px;margin-bottom:1.2rem;max-width:720px}
+  .hero-inner h1 em{color:var(--orange);font-style:normal}
+  .hero-inner p{font-size:1.1rem;color:rgba(255,255,255,.58);line-height:1.75;max-width:500px;margin-bottom:2rem}
+  .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
+  .stat-n{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:#fff}
+  .stat-l{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:2px}
+
+  /* ── SERVICES ── */
+  #services{background:var(--gray)}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.15rem;margin-top:2.5rem}
+  .svc-card{background:#fff;border-radius:12px;padding:1.65rem;border:1px solid var(--gm);transition:transform .2s,box-shadow .2s}
+  .svc-card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
+  .svc-ico{width:42px;height:42px;background:var(--ol);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem}
+  .svc-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.45rem;color:var(--black)}
+  .svc-card p{font-size:.865rem;color:var(--muted);line-height:1.65}
+
+  /* ── PORTFOLIO ── */
+  #portfolio{background:#fff}
+  .port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.15rem;margin-top:2.5rem}
+  .port-item{border-radius:12px;overflow:hidden;border:1px solid var(--gm);background:var(--gray);aspect-ratio:16/10;position:relative;cursor:pointer;transition:transform .2s}
+  .port-item:hover{transform:scale(1.025)}
+  .port-item:hover .port-over{opacity:1}
+  .pmock{width:100%;height:100%;display:flex;flex-direction:column}
+  .pmock-bar{height:30px;background:#2a2a2a;display:flex;align-items:center;padding:0 10px;gap:5px}
+  .pmock-dot{width:7px;height:7px;border-radius:50%}
+  .pmock-body{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px}
+  .pmock-hero{height:46px;background:var(--orange);border-radius:5px;opacity:.88}
+  .pmock-row{height:9px;background:var(--gm);border-radius:4px}
+  .pmock-row.s{width:55%}
+  .pmock-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+  .pmock-col{height:38px;background:#fff;border-radius:4px;border:1px solid var(--gm)}
+  .port-over{position:absolute;inset:0;background:rgba(242,100,25,.91);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+  .port-over strong{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700}
+  .port-over span{font-size:.78rem;opacity:.85;margin-top:3px}
+
+  /* ── PRICING ── */
+  #pricing{background:var(--gray)}
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.15rem;margin-top:2.5rem}
+  .price-card{background:#fff;border-radius:12px;padding:1.85rem;border:1px solid var(--gm);display:flex;flex-direction:column}
+  .price-card.feat{background:var(--black);border-color:var(--black)}
+  .price-badge{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--orange);color:#fff;padding:.22rem .55rem;border-radius:4px;display:inline-block;margin-bottom:.9rem;align-self:flex-start}
+  .price-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.4rem;color:var(--black)}
+  .price-card.feat h3{color:#fff}
+  .price-amt{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;color:var(--black);margin:.65rem 0}
+  .price-card.feat .price-amt{color:#fff}
+  .price-amt span{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:400;color:var(--muted)}
+  .price-card.feat .price-amt span{color:rgba(255,255,255,.45)}
+  .price-desc{font-size:.84rem;color:var(--muted);margin-bottom:1.15rem;line-height:1.6}
+  .price-card.feat .price-desc{color:rgba(255,255,255,.5)}
+  .price-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.6rem;flex:1}
+  .price-list li{font-size:.86rem;display:flex;align-items:center;gap:8px;color:var(--body)}
+  .price-card.feat .price-list li{color:rgba(255,255,255,.78)}
+  .price-list li::before{content:'';width:15px;height:15px;min-width:15px;border-radius:50%;background:var(--ol);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23F26419' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' d='M3 8l3 3 7-7'/%3E%3C/svg%3E");background-size:9px;background-position:center;background-repeat:no-repeat}
+  .price-card.feat .price-list li::before{background-color:rgba(242,100,25,.18)}
+
+  /* ── ABOUT ── */
+  #about{background:#fff}
+  .about-layout{display:flex;gap:3.5rem;align-items:flex-start;margin-top:2.5rem;flex-wrap:wrap}
+  .about-left{flex:1;min-width:280px;display:flex;flex-direction:column;gap:1rem}
+  .about-card-main{background:var(--black);border-radius:14px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem}
+  .about-tags{display:flex;flex-wrap:wrap;gap:7px}
+  .about-tag{background:rgba(242,100,25,.13);color:var(--orange);font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;border:1px solid rgba(242,100,25,.25)}
+  .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .about-num-box{background:rgba(255,255,255,.05);border-radius:10px;padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.07)}
+  .about-num{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;color:var(--orange)}
+  .about-num-l{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:2px}
+  .about-accent{background:var(--orange);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:.85rem}
+  .about-accent p{font-size:.875rem;font-weight:600;color:#fff;line-height:1.45}
+  .about-right{flex:1;min-width:280px;display:flex;flex-direction:column;gap:1.35rem}
+  .about-right h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.5vw,2.25rem);font-weight:800;color:var(--black);letter-spacing:-.4px;line-height:1.15}
+  .about-right h2 em{color:var(--orange);font-style:normal}
+  .about-right p{font-size:.95rem;color:var(--muted);line-height:1.8}
+  .about-vals{display:flex;flex-direction:column;gap:.65rem}
+  .about-val{display:flex;align-items:flex-start;gap:.75rem;background:var(--gray);border-radius:9px;padding:.85rem 1rem;border:1px solid var(--gm)}
+  .v-ico{font-size:1.1rem;margin-top:1px}
+  .about-val strong{font-size:.85rem;font-weight:700;color:var(--black);display:block;margin-bottom:2px}
+  .about-val span{font-size:.815rem;color:var(--muted);line-height:1.5}
+
+  /* ── CONTACT ── */
+  #contact{background:var(--black)}
+  #contact .big{color:#fff}
+  #contact .sub{color:rgba(255,255,255,.48)}
+  .contact-box{display:flex;gap:2.5rem;margin-top:2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2.25rem;flex-wrap:wrap}
+  .contact-info{display:flex;flex-direction:column;gap:1.4rem;flex:1;min-width:220px}
+  .c-item{display:flex;align-items:flex-start;gap:11px}
+  .c-ico{width:38px;height:38px;min-width:38px;background:rgba(242,100,25,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .c-text strong{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.38);margin-bottom:2px;font-weight:700}
+  .c-text span{color:#fff;font-size:.9rem}
+  .contact-form{display:flex;flex-direction:column;gap:.85rem;flex:1.3;min-width:260px}
+  .contact-form input,.contact-form textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem .95rem;color:#fff;font-family:'Inter',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s;resize:none}
+  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.28)}
+  .contact-form input:focus,.contact-form textarea:focus{border-color:var(--orange)}
+  .contact-form textarea{height:115px}
+  .contact-form .btn-fill{width:100%;text-align:center;padding:.85rem;font-size:.925rem;border:none}
+
+  /* ── FOOTER ── */
+  footer{background:#080808;border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff}
+  .footer-logo span{color:var(--orange)}
+  footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
+
+  /* ── ACTIVE NAV HIGHLIGHT ── */
+  .nav-links a.active{color:var(--orange);background:var(--ol)}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    nav{padding:0 1.25rem}
+    .nav-links,.nav-cta{display:none}
+    .nav-hamburger{display:block}
+    section{padding:4rem 1.25rem}
+    .hero-stats{gap:1.5rem}
+    footer{padding:1.25rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#home"><span>RGV</span> Sites For You</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get a free quote</a>
+  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home"      onclick="closeMenu()">Home</a>
+  <a href="#services"  onclick="closeMenu()">Services</a>
+  <a href="#portfolio" onclick="closeMenu()">Work</a>
+  <a href="#pricing"   onclick="closeMenu()">Pricing</a>
+  <a href="#about"     onclick="closeMenu()">About</a>
+  <a href="#contact"   onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-ghost">WEB</div>
+  <div class="hero-inner">
+    <div class="pill">Based in the Rio Grande Valley</div>
+    <h1>Websites that work <em>as hard</em> as you do.</h1>
+    <p>We build fast, custom websites for RGV businesses that want to look professional, show up on Google, and actually turn visitors into customers.</p>
+    <div class="hero-btns">
+      <a class="btn btn-fill" href="#contact">Get a free quote</a>
+      <a class="btn btn-ghost" href="#portfolio">See our work</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">RGV</div><div class="stat-l">Locally rooted</div></div>
+      <div><div class="stat-n">Fast</div><div class="stat-l">Quick delivery</div></div>
+      <div><div class="stat-n">100%</div><div class="stat-l">You own the site</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <span class="label">What we do</span>
+    <h2 class="big">Everything your business needs online</h2>
+    <p class="sub">We handle the whole thing — design, build, and launch — so you can stay focused on what you do best.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-ico">🎨</div><h3>Custom web design</h3><p>Every site is built from scratch around your brand. No templates, no copy-paste — yours looks like yours.</p></div>
+      <div class="svc-card"><div class="svc-ico">📱</div><h3>Mobile-first builds</h3><p>More than half your visitors are on their phone. Your site will look sharp and load fast on every screen.</p></div>
+      <div class="svc-card"><div class="svc-ico">🔍</div><h3>Local SEO setup</h3><p>We configure your site so Google knows who you are — helping RGV customers find you first.</p></div>
+      <div class="svc-card"><div class="svc-ico">⚡</div><h3>Speed optimization</h3><p>Slow sites lose visitors. We build lean, fast-loading pages that keep people around long enough to become customers.</p></div>
+      <div class="svc-card"><div class="svc-ico">🔧</div><h3>Ongoing maintenance</h3><p>Affordable monthly plans to keep your site updated, backed up, and running without lifting a finger.</p></div>
+      <div class="svc-card"><div class="svc-ico">🌐</div><h3>Domain &amp; hosting help</h3><p>We walk you through getting your domain and hosting sorted — simple and stress-free.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="inner">
+    <span class="label">Our work</span>
+    <h2 class="big">Built for real businesses</h2>
+    <p class="sub">Every project is custom. Here's the kind of work we deliver — replace these with your real sites as you land clients.</p>
+    <div class="port-grid">
+
+      <div class="port-item">
+        <div class="pmock">
+          <div class="pmock-bar">
+            <div class="pmock-dot" style="background:#FF5F57"></div>
+            <div class="pmock-dot" style="background:#FEBC2E"></div>
+            <div class="pmock-dot" style="background:#28C840"></div>
+          </div>
+          <div class="pmock-body">
+            <div class="pmock-hero"></div>
+            <div class="pmock-row"></div>
+            <div class="pmock-row s"></div>
+            <div class="pmock-cols"><div class="pmock-col"></div><div class="pmock-col"></div><div class="pmock-col"></div></div>
+          </div>
+        </div>
+        <div class="port-over"><strong>Local Restaurant</strong><span>Menu &amp; reservations</span></div>
+      </div>
+
+      <div class="port-item">
+        <div class="pmock">
+          <div class="pmock-bar">
+            <div class="pmock-dot" style="background:#FF5F57"></div>
+            <div class="pmock-dot" style="background:#FEBC2E"></div>
+            <div class="pmock-dot" style="background:#28C840"></div>
+          </div>
+          <div class="pmock-body" style="background:#111">
+            <div class="pmock-hero" style="background:#F26419;opacity:.75"></div>
+            <div class="pmock-row" style="background:rgba(255,255,255,.1)"></div>
+            <div class="pmock-row s" style="background:rgba(255,255,255,.07)"></div>
+          </div>
+        </div>
+        <div class="port-over"><strong>Fitness Studio</strong><span>Brand site + schedule</span></div>
+      </div>
+
+      <div class="port-item">
+        <div class="pmock">
+          <div class="pmock-bar">
+            <div class="pmock-dot" style="background:#FF5F57"></div>
+            <div class="pmock-dot" style="background:#FEBC2E"></div>
+            <div class="pmock-dot" style="background:#28C840"></div>
+          </div>
+          <div class="pmock-body">
+            <div class="pmock-hero" style="background:#2C2A28"></div>
+            <div class="pmock-row"></div>
+            <div class="pmock-cols"><div class="pmock-col"></div><div class="pmock-col"></div><div class="pmock-col"></div></div>
+          </div>
+        </div>
+        <div class="port-over"><strong>Law Office</strong><span>Professional landing page</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="inner">
+    <span class="label">Pricing</span>
+    <h2 class="big">Straightforward pricing</h2>
+    <p class="sub">No surprise invoices. No confusing packages. Pick what fits and let's get to work.</p>
+    <div class="price-grid">
+
+      <div class="price-card">
+        <h3>Starter</h3>
+        <div class="price-amt">$799<span> / project</span></div>
+        <p class="price-desc">Great for new businesses that need a clean, professional site up fast without a big investment.</p>
+        <ul class="price-list">
+          <li>Up to 3 pages</li><li>Mobile responsive</li><li>Contact form</li>
+          <li>Domain &amp; hosting setup</li><li>2-week delivery</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Get started</a>
+      </div>
+
+      <div class="price-card feat">
+        <div class="price-badge">Most popular</div>
+        <h3>Business</h3>
+        <div class="price-amt">$1,499<span> / project</span></div>
+        <p class="price-desc">The complete package for businesses ready to stand out, rank on Google, and convert visitors.</p>
+        <ul class="price-list">
+          <li>Up to 6 pages</li><li>Custom design</li><li>SEO setup</li>
+          <li>Google Maps integration</li><li>Speed optimized</li><li>3-week delivery</li>
+        </ul>
+        <a class="btn btn-fill" href="#contact">Get started</a>
+      </div>
+
+      <div class="price-card">
+        <h3>Maintenance</h3>
+        <div class="price-amt">$99<span> / mo</span></div>
+        <p class="price-desc">We keep your site updated, secure, and backed up every month so you never have to think about it.</p>
+        <ul class="price-list">
+          <li>Content updates</li><li>Security monitoring</li><li>Monthly backups</li>
+          <li>Priority support</li><li>Performance checks</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">Get started</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <span class="label">About us</span>
+    <div class="about-layout">
+
+      <div class="about-left">
+        <div class="about-card-main">
+          <div class="about-tags">
+            <span class="about-tag">🌵 Born in the RGV</span>
+            <span class="about-tag">💬 Bilingual</span>
+            <span class="about-tag">💻 Self-taught</span>
+          </div>
+          <div class="about-nums">
+            <div class="about-num-box"><div class="about-num">RGV</div><div class="about-num-l">Where we're from</div></div>
+            <div class="about-num-box"><div class="about-num">2</div><div class="about-num-l">Founders</div></div>
+            <div class="about-num-box"><div class="about-num">ES</div><div class="about-num-l">En español también</div></div>
+            <div class="about-num-box"><div class="about-num">$0</div><div class="about-num-l">Hidden fees</div></div>
+          </div>
+        </div>
+        <div class="about-accent">
+          <span style="font-size:1.5rem">📍</span>
+          <p>We're not a big agency from Austin or Dallas — we're your neighbors, and we treat your business like it's our own.</p>
+        </div>
+      </div>
+
+      <div class="about-right">
+        <h2>Started here.<br><em>Built for here.</em></h2>
+        <p>We grew up in the Rio Grande Valley. We went to school here, eat here, and know what it takes for a local business to stand out in this market. That perspective isn't something you can outsource — and it shows in every site we build.</p>
+        <p>We started RGV Sites For You because too many Valley businesses had outdated websites — or no website at all — while paying big-city prices. We wanted to fix that.</p>
+        <div class="about-vals">
+          <div class="about-val"><span class="v-ico">🤝</span><div><strong>You own everything</strong><span>Your domain, your code, your content. No subscriptions, no lock-in — ever.</span></div></div>
+          <div class="about-val"><span class="v-ico">🗣️</span><div><strong>We speak your language</strong><span>Literally. English or Spanish — whichever is more comfortable for you.</span></div></div>
+          <div class="about-val"><span class="v-ico">⚡</span><div><strong>No fluff, just results</strong><span>We skip the corporate process and focus on building a site that works for your business.</span></div></div>
+        </div>
+        <a class="btn btn-fill" href="#contact" style="margin-top:.5rem;align-self:flex-start">Work with us</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <span class="label">Contact</span>
+    <h2 class="big">Let's build something together</h2>
+    <p class="sub">Tell us about your business. We'll get back to you within 24 hours with a free quote — no pressure, no commitment.</p>
+    <div class="contact-box">
+      <div class="contact-info">
+        <div class="c-item"><div class="c-ico">📧</div><div class="c-text"><strong>Email</strong><span>hello@rgvsitesforyou.com</span></div></div>
+        <div class="c-item"><div class="c-ico">📍</div><div class="c-text"><strong>Location</strong><span>Rio Grande Valley, TX</span></div></div>
+        <div class="c-item"><div class="c-ico">🕐</div><div class="c-text"><strong>Response time</strong><span>Within 24 hours</span></div></div>
+        <div class="c-item"><div class="c-ico">💬</div><div class="c-text"><strong>Languages</strong><span>English &amp; Spanish</span></div></div>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your name">
+        <input type="email" placeholder="your@email.com">
+        <input type="text" placeholder="Your business name">
+        <textarea placeholder="Tell us about your project — what kind of site do you need?"></textarea>
+        <button class="btn btn-fill">Send message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>RGV</span> Sites For You</div>
+  <p>© 2025 RGV Sites For You — Rio Grande Valley, TX</p>
+</footer>
+
+<script>
+  // Mobile menu
+  function toggleMenu(){
+    document.getElementById('mobileMenu').classList.toggle('open')
+  }
+  function closeMenu(){
+    document.getElementById('mobileMenu').classList.remove('open')
+  }
+
+  // Active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id]')
+  const navLinks = document.querySelectorAll('.nav-links a')
+
+  function setActive(){
+    let current = ''
+    sections.forEach(s => {
+      if(window.scrollY >= s.offsetTop - 80) current = s.id
+    })
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current)
+    })
+  }
+
+  window.addEventListener('scroll', setActive)
+  setActive()
+
+  // Smooth scroll offset for fixed nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'))
+      if(target){
+        e.preventDefault()
+        window.scrollTo({top: target.offsetTop - 64, behavior: 'smooth'})
+      }
+    })
+  })
+</script>
+</body>
+</html>
