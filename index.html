@@ -219,6 +219,14 @@
   .portfolio-card .chrome-screen{
     aspect-ratio:16/10; position:relative; display:flex; align-items:center; justify-content:center;
     color:#fff; text-align:center; padding:20px;
+    overflow:hidden;
+  }
+  /* FIX: any screenshot dropped inside .chrome-screen now fills the frame
+     and crops to it, instead of rendering at full natural size. */
+  .chrome-screen img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit:cover; object-position:top center;
   }
   .portfolio-card .chrome-screen .tag{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em;
@@ -415,38 +423,35 @@
           <div class="chrome-url mono">lastacita-restaurant.com</div>
         </div>
         <div class="chrome-screen">
-          <div>
-            <div class="tag mono" data-en>RESTAURANT</div>
-            <div class="tag mono" data-es>RESTAURANTE</div>
-            <h4><span data-en>Full menu &amp; ordering</span><span data-es>Menú completo y pedidos</span></h4>
-          </div>
+          <img src="images/restaurant-template.png" alt="Restaurant template preview">
         </div>
         <div class="portfolio-meta">
           <div>
             <h5><span data-en>Restaurant Template</span><span data-es>Plantilla de Restaurante</span></h5>
             <span><span data-en>Menu, hours, reservations</span><span data-es>Menú, horarios, reservaciones</span></span>
           </div>
-          <a href="#contacto"><span data-en><a href=" https://restaurant-website-templates.github.io/Premium-Restaurant-Template-2/">View demo</a> →</span><span data-es>Ver demo →</span></a>
+          <a href="https://restaurant-website-templates.github.io/Premium-Restaurant-Template-2/" target="_blank" rel="noopener">
+            <span data-en>View demo →</span><span data-es>Ver demo →</span>
+          </a>
         </div>
       </div>
 
       <div class="chrome portfolio-card pf-2">
-        <div>
-        <img src="Screenshot 2026-07-25 12.15.39 PM.png" alt="image of a menu template"/>
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">valleyhomeservices.com</div>
         </div>
         <div class="chrome-screen">
-          <div>
-            <div class="tag mono" data-en>SERVICE BUSINESS</div>
-            <div class="tag mono" data-es>NEGOCIO DE SERVICIOS</div>
-            <h4><span data-en>Booking &amp; service areas</span><span data-es>Citas y áreas de servicio</span></h4>
-          </div>
+          <img src="images/valley-home-services.png" alt="Service business template preview">
         </div>
         <div class="portfolio-meta">
           <div>
             <h5><span data-en>Service Business Template</span><span data-es>Plantilla de Negocio de Servicios</span></h5>
             <span><span data-en>Quote form, service map, reviews</span><span data-es>Formulario, mapa, reseñas</span></span>
           </div>
-          <a href="#contacto"><span data-en><a href=" https://ortloyadiel0123.github.io/Valley-Home-Services-Template/">View demo</a> →</span><span data-es>Ver demo →</span></a>
+          <a href="https://ortloyadiel0123.github.io/Valley-Home-Services-Template/" target="_blank" rel="noopener">
+            <span data-en>View demo →</span><span data-es>Ver demo →</span>
+          </a>
         </div>
       </div>
 
@@ -456,18 +461,16 @@
           <div class="chrome-url mono">rgvboutiqueshop.com</div>
         </div>
         <div class="chrome-screen">
-          <div>
-            <div class="tag mono" data-en>RETAIL</div>
-            <div class="tag mono" data-es>TIENDA</div>
-            <h4><span data-en>Product gallery</span><span data-es>Galería de productos</span></h4>
-          </div>
+          <img src="images/rgv-boutique-shop.png" alt="Retail template preview">
         </div>
         <div class="portfolio-meta">
           <div>
             <h5><span data-en>Retail Template</span><span data-es>Plantilla de Tienda</span></h5>
             <span><span data-en>Catalog, hours, directions</span><span data-es>Catálogo, horario, direcciones</span></span>
           </div>
-          <a href="#contacto"><span data-en><a href=" https://ortloyadiel0123.github.io/RGV-Boutique-shop-template/">View demo</a> →</span><span data-es>Ver demo →</span></a>
+          <a href="https://ortloyadiel0123.github.io/RGV-Boutique-shop-template/" target="_blank" rel="noopener">
+            <span data-en>View demo →</span><span data-es>Ver demo →</span>
+          </a>
         </div>
       </div>
 
@@ -477,25 +480,23 @@
           <div class="chrome-url mono">yourname-portfolio.com</div>
         </div>
         <div class="chrome-screen">
-          <div>
-            <div class="tag mono" data-en>PORTFOLIO / EVENTS</div>
-            <div class="tag mono" data-es>PORTAFOLIO / EVENTOS</div>
-            <h4><span data-en>Photos &amp; a single-page story</span><span data-es>Fotos e historia de una sola página</span></h4>
-          </div>
+          <img src="images/portfolio-event-template.png" alt="Portfolio and event template preview">
         </div>
         <div class="portfolio-meta">
           <div>
             <h5><span data-en>Portfolio / Event Template</span><span data-es>Plantilla de Portafolio / Eventos</span></h5>
             <span><span data-en>Gallery, timeline, RSVP</span><span data-es>Galería, cronología, RSVP</span></span>
           </div>
-          <a href="#contacto"><span data-en><a href=" https://ortloyadiel0123.github.io/Portfolio-event-template/">View demo</a> →</span><span data-es>Ver demo →</span></a>
+          <a href="https://ortloyadiel0123.github.io/Portfolio-event-template/" target="_blank" rel="noopener">
+            <span data-en>View demo →</span><span data-es>Ver demo →</span>
+          </a>
         </div>
       </div>
     </div>
 
     <div class="swap-note">
-      <span data-en>These cards use colored placeholders instead of real screenshots. To drop in your actual template photos, replace each <code>.chrome-screen</code> div's content with <code>&lt;img src="images/restaurant-template.png" alt="Restaurant template preview"&gt;</code> and remove the gradient background from its matching CSS class (<code>.pf-1</code>, <code>.pf-2</code>, etc.) in the <code>&lt;style&gt;</code> section.</span>
-      <span data-es>Estas tarjetas usan marcadores de color en vez de capturas reales. Para poner tus fotos reales, reemplaza el contenido de cada <code>.chrome-screen</code> con <code>&lt;img src="images/restaurant-template.png" alt="Vista previa"&gt;</code> y quita el fondo degradado de su clase CSS correspondiente (<code>.pf-1</code>, <code>.pf-2</code>, etc.) en la sección <code>&lt;style&gt;</code>.</span>
+      <span data-en>All four cards are now wired to load real screenshots — you just need to add the image files. Create an <code>images/</code> folder next to this HTML file and save your screenshots as: <code>images/restaurant-template.png</code>, <code>images/valley-home-services.png</code>, <code>images/rgv-boutique-shop.png</code>, and <code>images/portfolio-event-template.png</code>. Each image will automatically fill and crop to fit its frame. Use dashes or underscores in filenames, never spaces.</span>
+      <span data-es>Las cuatro tarjetas ya están configuradas para cargar capturas reales — solo falta agregar los archivos de imagen. Crea una carpeta <code>images/</code> junto a este archivo HTML y guarda tus capturas como: <code>images/restaurant-template.png</code>, <code>images/valley-home-services.png</code>, <code>images/rgv-boutique-shop.png</code>, y <code>images/portfolio-event-template.png</code>. Cada imagen se ajustará automáticamente al marco. Usa guiones o guiones bajos en los nombres de archivo, nunca espacios.</span>
     </div>
   </div>
 </section>
