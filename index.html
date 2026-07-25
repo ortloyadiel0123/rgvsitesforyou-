@@ -3,482 +3,591 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Design Services in the RGV | rgvsitesforyou</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<title>RGV Sites For You — Websites for the Rio Grande Valley</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{
-    --orange:#F26419;--od:#C14E0F;--ol:#FFF0E8;
-    --black:#0F0F0F;--white:#fff;--gray:#F5F4F2;--gm:#E8E6E2;
-    --muted:#888580;--body:#2C2A28;
+    --ink:#1E2A28;
+    --paper:#F3EFDE;
+    --paper-soft:#FBF9F1;
+    --jade:#2F6F5E;
+    --jade-deep:#14332A;
+    --rust:#C0562E;
+    --gold:#E3B23C;
+    --line: rgba(30,42,40,0.14);
+    --shadow: 0 12px 30px rgba(20,51,42,0.14);
   }
-  html{scroll-behavior:smooth}
-  body{font-family:'Inter',sans-serif;color:var(--body);background:var(--white);overflow-x:hidden}
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--jade-deep);
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.02em;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  section{ padding:104px 0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--rust);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:16px; height:1px;
+    background:var(--rust);
+  }
+  button{ font-family:inherit; cursor:pointer; border:none; background:none; }
 
-  /* ── NAV ── */
+  /* ---------- visually-hidden alt-language text swap ---------- */
+  [data-es]{ display:none; }
+  html[lang="es"] [data-en]{ display:none; }
+  html[lang="es"] [data-es]{ display:inline; }
+  html[lang="es"] [data-es-block]{ display:block; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(243,239,222,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
   nav{
-    position:fixed;top:0;left:0;right:0;z-index:999;
-    height:64px;display:flex;align-items:center;justify-content:space-between;
-    padding:0 2.5rem;
-    background:rgba(255,255,255,0.97);
-    border-bottom:1px solid var(--gm);
-    backdrop-filter:blur(12px);
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1120px; margin:0 auto;
   }
-  .logo{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--black);text-decoration:none;cursor:pointer}
-  .logo span{color:var(--orange)}
-  .nav-links{display:flex;gap:4px;list-style:none}
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:19px;
+    color:var(--jade-deep);
+  }
+  .logo .dot-row{ display:flex; gap:4px; }
+  .logo .dot-row span{ width:6px; height:6px; border-radius:50%; display:block; }
+  .logo .dot-row span:nth-child(1){ background:var(--rust); }
+  .logo .dot-row span:nth-child(2){ background:var(--gold); }
+  .logo .dot-row span:nth-child(3){ background:var(--jade); }
+  .nav-links{ display:flex; align-items:center; gap:32px; }
   .nav-links a{
-    display:block;padding:.45rem .85rem;border-radius:6px;
-    font-size:.85rem;font-weight:500;color:var(--muted);
-    text-decoration:none;transition:color .2s,background .2s;
+    font-size:14.5px; font-weight:500; text-decoration:none;
+    color:var(--ink); opacity:0.75;
   }
-  .nav-links a:hover{color:var(--body);background:var(--gray)}
-  .nav-links a.active{color:var(--orange);background:var(--ol)}
-  .nav-cta{
-    background:var(--orange);color:#fff;border:none;
-    padding:.55rem 1.2rem;border-radius:6px;
-    font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;
-    cursor:pointer;text-decoration:none;transition:background .2s;
+  .nav-links a:hover{ opacity:1; }
+  .nav-right{ display:flex; align-items:center; gap:18px; }
+  .lang-toggle{
+    display:flex; align-items:center; background:var(--paper-soft);
+    border:1px solid var(--line); border-radius:999px; padding:3px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:500;
   }
-  .nav-cta:hover{background:var(--od)}
-  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
-  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--body);margin:4px 0;transition:.3s}
-  .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--gm);padding:1rem 1.5rem;flex-direction:column;gap:.5rem;z-index:998}
-  .mobile-menu a{display:block;padding:.65rem .75rem;border-radius:6px;font-size:.95rem;font-weight:500;color:var(--body);text-decoration:none}
-  .mobile-menu a:hover{background:var(--gray)}
-  .mobile-menu.open{display:flex}
-
-  /* ── SHARED ── */
-  section{padding:5rem 2rem}
-  .inner{max-width:1080px;margin:0 auto}
-  .label{display:block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:.65rem}
-  .big{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;color:var(--black);letter-spacing:-.5px;line-height:1.1;margin-bottom:1rem}
-  .sub{color:var(--muted);font-size:.975rem;line-height:1.75;max-width:540px}
-  .btn{display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;font-size:.925rem;border-radius:7px;text-decoration:none;padding:.8rem 1.65rem;transition:background .2s,transform .15s,color .2s,border-color .2s}
-  .btn-fill{background:var(--orange);color:#fff}
-  .btn-fill:hover{background:var(--od);transform:translateY(-1px)}
-  .btn-ghost{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25)}
-  .btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
-  .btn-outline{background:transparent;color:var(--body);border:1.5px solid var(--gm)}
-  .btn-outline:hover{border-color:var(--orange);color:var(--orange)}
-
-  /* ── HERO ── */
-  #home{
-    min-height:100vh;background:var(--black);
-    display:flex;align-items:center;
-    padding:6rem 2rem 4rem;position:relative;overflow:hidden;
+  .lang-toggle button{
+    padding:6px 12px; border-radius:999px; color:var(--ink); opacity:0.55;
+    transition:all .2s;
   }
-  .hero-ghost{
-    position:absolute;right:-2rem;top:50%;transform:translateY(-50%);
-    font-family:'Syne',sans-serif;font-size:20vw;font-weight:800;
-    color:rgba(255,255,255,.025);line-height:1;pointer-events:none;user-select:none;
+  .lang-toggle button.active{ background:var(--jade-deep); color:var(--paper-soft); opacity:1; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--jade-deep); color:var(--paper-soft);
+    padding:11px 20px; border-radius:8px;
+    font-size:14px; font-weight:600; text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .hero-inner{max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1}
-  .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    background:rgba(242,100,25,.14);border:1px solid rgba(242,100,25,.3);
-    color:var(--orange);font-size:.72rem;font-weight:700;
-    letter-spacing:.08em;text-transform:uppercase;
-    padding:.38rem .8rem;border-radius:100px;margin-bottom:1.4rem;
+  .btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+  .btn-ghost{
+    background:transparent; color:var(--jade-deep);
+    border:1.5px solid var(--jade-deep);
   }
-  .pill::before{content:'';width:6px;height:6px;background:var(--orange);border-radius:50%;animation:blink 2s infinite}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
-  .hero-inner h1{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:1.04;color:#fff;letter-spacing:-1px;margin-bottom:1.2rem;max-width:720px}
-  .hero-inner h1 em{color:var(--orange);font-style:normal}
-  .hero-inner p{font-size:1.1rem;color:rgba(255,255,255,.58);line-height:1.75;max-width:500px;margin-bottom:2rem}
-  .hero-btns{display:flex;gap:.9rem;flex-wrap:wrap}
-  .hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);flex-wrap:wrap}
-  .stat-n{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:#fff}
-  .stat-l{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:2px}
+  .btn-rust{ background:var(--rust); }
 
-  /* ── SERVICES ── */
-  #services{background:var(--gray)}
-  .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.15rem;margin-top:2.5rem}
-  .svc-card{background:#fff;border-radius:12px;padding:1.65rem;border:1px solid var(--gm);transition:transform .2s,box-shadow .2s}
-  .svc-card:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(0,0,0,.08)}
-  .svc-ico{width:42px;height:42px;background:var(--ol);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.9rem}
-  .svc-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.45rem;color:var(--black)}
-  .svc-card p{font-size:.865rem;color:var(--muted);line-height:1.65}
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+  }
 
-  /* ── PORTFOLIO ── */
-  #portfolio{background:#fff}
-  .port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.15rem;margin-top:2.5rem}
-  .port-item{border-radius:12px;overflow:hidden;border:1px solid var(--gm);background:var(--gray);aspect-ratio:16/10;position:relative;cursor:pointer;transition:transform .2s}
-  .port-item:hover{transform:scale(1.025)}
-  .port-item:hover .port-over{opacity:1}
-  .pmock{width:100%;height:100%;display:flex;flex-direction:column}
-  .pmock-bar{height:30px;background:#2a2a2a;display:flex;align-items:center;padding:0 10px;gap:5px}
-  .pmock-dot{width:7px;height:7px;border-radius:50%}
-  .pmock-body{flex:1;padding:14px;display:flex;flex-direction:column;gap:9px}
-  .pmock-hero{height:46px;background:var(--orange);border-radius:5px;opacity:.88}
-  .pmock-row{height:9px;background:var(--gm);border-radius:4px}
-  .pmock-row.s{width:55%}
-  .pmock-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
-  .pmock-col{height:38px;background:#fff;border-radius:4px;border:1px solid var(--gm)}
-  .port-over{position:absolute;inset:0;background:rgba(242,100,25,.91);opacity:0;transition:opacity .25s;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff}
-  .port-over strong{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700}
-  .port-over span{font-size:.78rem;opacity:.85;margin-top:3px}
+  /* ---------- BROWSER CHROME (signature motif) ---------- */
+  .chrome{
+    background:var(--paper-soft);
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .chrome-bar{
+    display:flex; align-items:center; gap:8px;
+    padding:10px 14px;
+    background:#EDE7D3;
+    border-bottom:1px solid var(--line);
+  }
+  .chrome-dots{ display:flex; gap:6px; }
+  .chrome-dots span{ width:9px; height:9px; border-radius:50%; background:rgba(30,42,40,0.18); }
+  .chrome-url{
+    flex:1;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:rgba(30,42,40,0.55);
+    background:var(--paper);
+    border-radius:5px;
+    padding:4px 10px;
+    text-align:center;
+  }
 
-  /* ── PRICING ── */
-  #pricing{background:var(--gray)}
-  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.15rem;margin-top:2.5rem}
-  .price-card{background:#fff;border-radius:12px;padding:1.85rem;border:1px solid var(--gm);display:flex;flex-direction:column}
-  .price-card.feat{background:var(--black);border-color:var(--black)}
-  .price-badge{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--orange);color:#fff;padding:.22rem .55rem;border-radius:4px;display:inline-block;margin-bottom:.9rem;align-self:flex-start}
-  .price-card h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:.4rem;color:var(--black)}
-  .price-card.feat h3{color:#fff}
-  .price-amt{font-family:'Syne',sans-serif;font-size:2.1rem;font-weight:800;color:var(--black);margin:.65rem 0}
-  .price-card.feat .price-amt{color:#fff}
-  .price-amt span{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:400;color:var(--muted)}
-  .price-card.feat .price-amt span{color:rgba(255,255,255,.45)}
-  .price-desc{font-size:.84rem;color:var(--muted);margin-bottom:1.15rem;line-height:1.6}
-  .price-card.feat .price-desc{color:rgba(255,255,255,.5)}
-  .price-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.6rem;flex:1}
-  .price-list li{font-size:.86rem;display:flex;align-items:center;gap:8px;color:var(--body)}
-  .price-card.feat .price-list li{color:rgba(255,255,255,.78)}
-  .price-list li::before{content:'';width:15px;height:15px;min-width:15px;border-radius:50%;background:var(--ol);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23F26419' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' d='M3 8l3 3 7-7'/%3E%3C/svg%3E");background-size:9px;background-position:center;background-repeat:no-repeat}
-  .price-card.feat .price-list li::before{background-color:rgba(242,100,25,.18)}
+  /* ---------- HERO ---------- */
+  .hero{ padding:88px 0 100px; }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 1fr; gap:56px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5vw, 58px);
+    line-height:1.05;
+    margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:italic; color:var(--rust); }
+  .hero p.lede{
+    font-size:17.5px; max-width:460px; color:rgba(30,42,40,0.78);
+    margin-bottom:32px;
+  }
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-note{
+    margin-top:26px; font-size:13px; color:rgba(30,42,40,0.55);
+    display:flex; align-items:center; gap:8px;
+  }
+  .hero-note::before{ content:"●"; color:var(--gold); font-size:9px; }
 
-  /* ── ABOUT ── */
-  #about{background:#fff}
-  .about-layout{display:flex;gap:3.5rem;align-items:flex-start;margin-top:2.5rem;flex-wrap:wrap}
-  .about-left{flex:1;min-width:280px;display:flex;flex-direction:column;gap:1rem}
-  .about-card-main{background:var(--black);border-radius:14px;padding:2.25rem;display:flex;flex-direction:column;gap:1.25rem}
-  .about-tags{display:flex;flex-wrap:wrap;gap:7px}
-  .about-tag{background:rgba(242,100,25,.13);color:var(--orange);font-size:.72rem;font-weight:700;padding:.3rem .7rem;border-radius:100px;border:1px solid rgba(242,100,25,.25)}
-  .about-nums{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-  .about-num-box{background:rgba(255,255,255,.05);border-radius:10px;padding:1rem 1.1rem;border:1px solid rgba(255,255,255,.07)}
-  .about-num{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;color:var(--orange)}
-  .about-num-l{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:2px}
-  .about-accent{background:var(--orange);border-radius:12px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:.85rem}
-  .about-accent p{font-size:.875rem;font-weight:600;color:#fff;line-height:1.45}
-  .about-right{flex:1;min-width:280px;display:flex;flex-direction:column;gap:1.35rem}
-  .about-right h2{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,3.5vw,2.25rem);font-weight:800;color:var(--black);letter-spacing:-.4px;line-height:1.15}
-  .about-right h2 em{color:var(--orange);font-style:normal}
-  .about-right p{font-size:.95rem;color:var(--muted);line-height:1.8}
-  .about-vals{display:flex;flex-direction:column;gap:.65rem}
-  .about-val{display:flex;align-items:flex-start;gap:.75rem;background:var(--gray);border-radius:9px;padding:.85rem 1rem;border:1px solid var(--gm)}
-  .v-ico{font-size:1.1rem;margin-top:1px}
-  .about-val strong{font-size:.85rem;font-weight:700;color:var(--black);display:block;margin-bottom:2px}
-  .about-val span{font-size:.815rem;color:var(--muted);line-height:1.5}
+  .hero-chrome{ position:relative; }
+  .hero-chrome .chrome-screen{
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+  }
+  .slide{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:26px; opacity:0; transition:opacity .8s ease;
+    color:#fff;
+  }
+  .slide.active{ opacity:1; }
+  .slide h4{ font-family:'Fraunces', serif; font-size:24px; color:#fff; margin-bottom:6px; }
+  .slide p{ font-size:12.5px; opacity:0.9; }
+  .slide-1{ background:linear-gradient(160deg,#5B3A2A,#C0562E 65%); }
+  .slide-2{ background:linear-gradient(160deg,#14332A,#2F6F5E 65%); }
+  .slide-3{ background:linear-gradient(160deg,#4A3A12,#E3B23C 70%); }
+  .chrome-dots-nav{
+    position:absolute; bottom:14px; right:14px; display:flex; gap:6px; z-index:2;
+  }
+  .chrome-dots-nav span{
+    width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.4);
+  }
+  .chrome-dots-nav span.active{ background:#fff; }
 
-  /* ── CONTACT ── */
-  #contact{background:var(--black)}
-  #contact .big{color:#fff}
-  #contact .sub{color:rgba(255,255,255,.48)}
-  .contact-box{display:flex;gap:2.5rem;margin-top:2.5rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:2.25rem;flex-wrap:wrap}
-  .contact-info{display:flex;flex-direction:column;gap:1.4rem;flex:1;min-width:220px}
-  .c-item{display:flex;align-items:flex-start;gap:11px}
-  .c-ico{width:38px;height:38px;min-width:38px;background:rgba(242,100,25,.14);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
-  .c-text strong{display:block;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.38);margin-bottom:2px;font-weight:700}
-  .c-text span{color:#fff;font-size:.9rem}
-  .contact-form{display:flex;flex-direction:column;gap:.85rem;flex:1.3;min-width:260px}
-  .contact-form input,.contact-form textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.75rem .95rem;color:#fff;font-family:'Inter',sans-serif;font-size:.875rem;outline:none;transition:border-color .2s;resize:none}
-  .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.28)}
-  .contact-form input:focus,.contact-form textarea:focus{border-color:var(--orange)}
-  .contact-form textarea{height:115px}
-  .contact-form .btn-fill{width:100%;text-align:center;padding:.85rem;font-size:.925rem;border:none}
+  /* ---------- SERVICES ---------- */
+  .services{ background:var(--paper-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .services-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-top:48px;
+  }
+  .service-card{ background:var(--paper-soft); padding:32px 28px; }
+  .service-card .mono{ font-size:12px; color:var(--rust); display:block; margin-bottom:14px; }
+  .service-card h3{ font-size:19px; margin-bottom:10px; }
+  .service-card p{ font-size:14.5px; color:rgba(30,42,40,0.72); }
+  @media (max-width:860px){ .services-grid{ grid-template-columns:1fr; } .hero-grid{ grid-template-columns:1fr; } }
 
-  /* ── FOOTER ── */
-  footer{background:#080808;border-top:1px solid rgba(255,255,255,.06);padding:1.5rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-  .footer-logo{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800;color:#fff}
-  .footer-logo span{color:var(--orange)}
-  footer p{font-size:.78rem;color:rgba(255,255,255,.3)}
+  /* ---------- PORTFOLIO ---------- */
+  .section-head{ max-width:600px; margin-bottom:50px; }
+  .section-head h2{ font-size:clamp(28px,3.6vw,38px); margin-bottom:14px; }
+  .section-head p{ font-size:16px; color:rgba(30,42,40,0.72); }
+  .portfolio-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:28px;
+  }
+  @media (max-width:860px){ .portfolio-grid{ grid-template-columns:1fr; } }
+  .portfolio-card .chrome-screen{
+    aspect-ratio:16/10; position:relative; display:flex; align-items:center; justify-content:center;
+    color:#fff; text-align:center; padding:20px;
+  }
+  .portfolio-card .chrome-screen .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.08em;
+    text-transform:uppercase; opacity:0.85; margin-bottom:8px;
+  }
+  .portfolio-card .chrome-screen h4{ font-family:'Fraunces', serif; font-size:22px; color:#fff; }
+  .pf-1 .chrome-screen{ background:linear-gradient(150deg,#3A1F14,#C0562E); }
+  .pf-2 .chrome-screen{ background:linear-gradient(150deg,#0F241D,#2F6F5E); }
+  .pf-3 .chrome-screen{ background:linear-gradient(150deg,#3D2E08,#E3B23C); color:#2A2109; }
+  .pf-4 .chrome-screen{ background:linear-gradient(150deg,#241B33,#6E5A9E); }
+  .portfolio-meta{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 20px; border-top:1px solid var(--line);
+  }
+  .portfolio-meta h5{ font-size:15.5px; font-weight:600; margin-bottom:3px; }
+  .portfolio-meta span{ font-size:13px; color:rgba(30,42,40,0.6); }
+  .portfolio-meta a{ font-size:13px; font-weight:600; color:var(--jade); text-decoration:none; white-space:nowrap; }
+  .swap-note{
+    margin-top:36px; font-size:13px; color:rgba(30,42,40,0.55);
+    background:var(--paper-soft); border:1px dashed var(--line); border-radius:10px; padding:16px 18px;
+  }
+  .swap-note code{ background:var(--paper); padding:2px 6px; border-radius:4px; font-family:'IBM Plex Mono', monospace; }
 
-  /* ── ACTIVE NAV HIGHLIGHT ── */
-  .nav-links a.active{color:var(--orange);background:var(--ol)}
+  /* ---------- PROCESS ---------- */
+  .process{ background:var(--jade-deep); color:var(--paper-soft); }
+  .process .section-head h2, .process .section-head p{ color:var(--paper-soft); }
+  .process .section-head p{ opacity:0.75; }
+  .process-list{ display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:48px; }
+  @media (max-width:860px){ .process-list{ grid-template-columns:1fr 1fr; } }
+  .step{ border-top:1px solid rgba(251,249,241,0.2); padding-top:20px; }
+  .step .num{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold); display:block; margin-bottom:14px; }
+  .step h4{ font-family:'Fraunces', serif; font-size:18px; color:var(--paper-soft); margin-bottom:8px; }
+  .step p{ font-size:13.5px; opacity:0.75; }
 
-  /* ── RESPONSIVE ── */
-  @media(max-width:768px){
-    nav{padding:0 1.25rem}
-    .nav-links,.nav-cta{display:none}
-    .nav-hamburger{display:block}
-    section{padding:4rem 1.25rem}
-    .hero-stats{gap:1.5rem}
-    footer{padding:1.25rem}
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
+  .contact-grid h2{ font-size:clamp(28px,3.6vw,38px); margin-bottom:18px; }
+  .contact-grid p{ color:rgba(30,42,40,0.72); font-size:16px; margin-bottom:24px; max-width:420px; }
+  .contact-list{ display:flex; flex-direction:column; gap:14px; }
+  .contact-list div{ display:flex; gap:12px; align-items:baseline; font-size:14.5px; }
+  .contact-list span.mono{ color:var(--rust); font-size:12px; min-width:74px; }
+  form{ display:flex; flex-direction:column; gap:14px; }
+  input, textarea{
+    font-family:'Inter', sans-serif; font-size:14.5px;
+    padding:13px 15px; border-radius:8px; border:1px solid var(--line);
+    background:var(--paper-soft); color:var(--ink);
+  }
+  input:focus, textarea:focus{ outline:2px solid var(--jade); outline-offset:1px; }
+  textarea{ resize:vertical; min-height:100px; }
+  form .btn{ align-self:flex-start; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ border-top:1px solid var(--line); padding:32px 0; }
+  .footer-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+  .footer-row p{ font-size:13px; color:rgba(30,42,40,0.55); }
+
+  @media (prefers-reduced-motion: reduce){
+    .slide{ transition:none; }
+    html{ scroll-behavior:auto; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="#home"><span>RGV</span> Sites For You</a>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Work</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a class="nav-cta" href="#contact">Get a free quote</a>
-  <button class="nav-hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home"      onclick="closeMenu()">Home</a>
-  <a href="#services"  onclick="closeMenu()">Services</a>
-  <a href="#portfolio" onclick="closeMenu()">Work</a>
-  <a href="#pricing"   onclick="closeMenu()">Pricing</a>
-  <a href="#about"     onclick="closeMenu()">About</a>
-  <a href="#contact"   onclick="closeMenu()">Contact</a>
-</div>
-
-<!-- HOME -->
-<section id="home">
-  <div class="hero-ghost">WEB</div>
-  <div class="hero-inner">
-    <div class="pill">Based in the Rio Grande Valley</div>
-    <h1>Websites that work <em>as hard</em> as you do.</h1>
-    <p>We build fast, custom websites for RGV businesses that want to look professional, show up on Google, and actually turn visitors into customers.</p>
-    <div class="hero-btns">
-      <a class="btn btn-fill" href="#contact">Get a free quote</a>
-      <a class="btn btn-ghost" href="#portfolio">See our work</a>
+<header>
+  <nav>
+    <div class="logo">
+      <div class="dot-row"><span></span><span></span><span></span></div>
+      RGV Sites For You
     </div>
-    <div class="hero-stats">
-      <div><div class="stat-n">RGV</div><div class="stat-l">Locally rooted</div></div>
-      <div><div class="stat-n">Fast</div><div class="stat-l">Quick delivery</div></div>
-      <div><div class="stat-n">100%</div><div class="stat-l">You own the site</div></div>
+    <div class="nav-links">
+      <a href="#servicios">
+        <span data-en>Services</span><span data-es>Servicios</span>
+      </a>
+      <a href="#portafolio">
+        <span data-en>Portfolio</span><span data-es>Portafolio</span>
+      </a>
+      <a href="#proceso">
+        <span data-en>Process</span><span data-es>Proceso</span>
+      </a>
+      <a href="#contacto">
+        <span data-en>Contact</span><span data-es>Contacto</span>
+      </a>
     </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="inner">
-    <span class="label">What we do</span>
-    <h2 class="big">Everything your business needs online</h2>
-    <p class="sub">We handle the whole thing — design, build, and launch — so you can stay focused on what you do best.</p>
-    <div class="svc-grid">
-      <div class="svc-card"><div class="svc-ico">🎨</div><h3>Custom web design</h3><p>Every site is built from scratch around your brand. No templates, no copy-paste — yours looks like yours.</p></div>
-      <div class="svc-card"><div class="svc-ico">📱</div><h3>Mobile-first builds</h3><p>More than half your visitors are on their phone. Your site will look sharp and load fast on every screen.</p></div>
-      <div class="svc-card"><div class="svc-ico">🔍</div><h3>Local SEO setup</h3><p>We configure your site so Google knows who you are — helping RGV customers find you first.</p></div>
-      <div class="svc-card"><div class="svc-ico">⚡</div><h3>Speed optimization</h3><p>Slow sites lose visitors. We build lean, fast-loading pages that keep people around long enough to become customers.</p></div>
-      <div class="svc-card"><div class="svc-ico">🔧</div><h3>Ongoing maintenance</h3><p>Affordable monthly plans to keep your site updated, backed up, and running without lifting a finger.</p></div>
-      <div class="svc-card"><div class="svc-ico">🌐</div><h3>Domain &amp; hosting help</h3><p>We walk you through getting your domain and hosting sorted — simple and stress-free.</p></div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+      <a class="btn" href="#contacto">
+        <span data-en>Get a quote</span><span data-es>Pedir cotización</span>
+      </a>
     </div>
-  </div>
-</section>
+  </nav>
+</header>
 
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="inner">
-    <span class="label">Our work</span>
-    <h2 class="big">Built for real businesses</h2>
-    <p class="sub">Every project is custom. Here's the kind of work we deliver — replace these with your real sites as you land clients.</p>
-    <div class="port-grid">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">
+        <span data-en>Web design · Rio Grande Valley</span>
+        <span data-es>Diseño web · Valle del Río Grande</span>
+      </div>
+      <h1>
+        <span data-en>Websites built for how <em>the Valley</em> actually does business.</span>
+        <span data-es>Sitios web hechos para cómo <em>el Valle</em> realmente hace negocios.</span>
+      </h1>
+      <p class="lede">
+        <span data-en>Custom, fast-loading sites for restaurants, shops, and local service businesses across Mission, McAllen, Edinburg, and beyond — designed, built, and hosted start to finish.</span>
+        <span data-es>Sitios personalizados y rápidos para restaurantes, tiendas y negocios de servicios en Mission, McAllen, Edinburg y más allá — diseñados, construidos y alojados de principio a fin.</span>
+      </p>
+      <div class="hero-ctas">
+        <a class="btn btn-rust" href="#portafolio">
+          <span data-en>See the templates</span><span data-es>Ver las plantillas</span>
+        </a>
+        <a class="btn btn-ghost" href="#contacto">
+          <span data-en>Start a project</span><span data-es>Comenzar un proyecto</span>
+        </a>
+      </div>
+      <div class="hero-note">
+        <span data-en>Se habla español — every site built bilingual on request</span>
+        <span data-es>Se habla español — todo sitio se puede construir bilingüe</span>
+      </div>
+    </div>
 
-      <div class="port-item">
-        <div class="pmock">
-          <div class="pmock-bar">
-            <div class="pmock-dot" style="background:#FF5F57"></div>
-            <div class="pmock-dot" style="background:#FEBC2E"></div>
-            <div class="pmock-dot" style="background:#28C840"></div>
+    <div class="hero-chrome">
+      <div class="chrome">
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono" id="chrome-url">yourbusiness.com</div>
+        </div>
+        <div class="chrome-screen">
+          <div class="slide slide-1 active">
+            <div class="tag mono" data-en>RESTAURANT TEMPLATE</div>
+            <div class="tag mono" data-es>PLANTILLA DE RESTAURANTE</div>
+            <h4><span data-en>Full menu, hours &amp; online ordering link</span><span data-es>Menú completo, horarios y enlace para pedidos</span></h4>
           </div>
-          <div class="pmock-body">
-            <div class="pmock-hero"></div>
-            <div class="pmock-row"></div>
-            <div class="pmock-row s"></div>
-            <div class="pmock-cols"><div class="pmock-col"></div><div class="pmock-col"></div><div class="pmock-col"></div></div>
+          <div class="slide slide-2">
+            <div class="tag mono" data-en>SERVICE BUSINESS TEMPLATE</div>
+            <div class="tag mono" data-es>PLANTILLA DE NEGOCIO DE SERVICIOS</div>
+            <h4><span data-en>Booking form &amp; service area map</span><span data-es>Formulario de citas y mapa de servicio</span></h4>
+          </div>
+          <div class="slide slide-3">
+            <div class="tag mono" data-en>RETAIL TEMPLATE</div>
+            <div class="tag mono" data-es>PLANTILLA DE TIENDA</div>
+            <h4><span data-en>Product gallery &amp; store hours</span><span data-es>Galería de productos y horario</span></h4>
+          </div>
+          <div class="chrome-dots-nav">
+            <span class="active"></span><span></span><span></span>
           </div>
         </div>
-        <div class="port-over"><strong>Local Restaurant</strong><span>Menu &amp; reservations</span></div>
-      </div>
-
-      <div class="port-item">
-        <div class="pmock">
-          <div class="pmock-bar">
-            <div class="pmock-dot" style="background:#FF5F57"></div>
-            <div class="pmock-dot" style="background:#FEBC2E"></div>
-            <div class="pmock-dot" style="background:#28C840"></div>
-          </div>
-          <div class="pmock-body" style="background:#111">
-            <div class="pmock-hero" style="background:#F26419;opacity:.75"></div>
-            <div class="pmock-row" style="background:rgba(255,255,255,.1)"></div>
-            <div class="pmock-row s" style="background:rgba(255,255,255,.07)"></div>
-          </div>
-        </div>
-        <div class="port-over"><strong>Fitness Studio</strong><span>Brand site + schedule</span></div>
-      </div>
-
-      <div class="port-item">
-        <div class="pmock">
-          <div class="pmock-bar">
-            <div class="pmock-dot" style="background:#FF5F57"></div>
-            <div class="pmock-dot" style="background:#FEBC2E"></div>
-            <div class="pmock-dot" style="background:#28C840"></div>
-          </div>
-          <div class="pmock-body">
-            <div class="pmock-hero" style="background:#2C2A28"></div>
-            <div class="pmock-row"></div>
-            <div class="pmock-cols"><div class="pmock-col"></div><div class="pmock-col"></div><div class="pmock-col"></div></div>
-          </div>
-        </div>
-        <div class="port-over"><strong>Law Office</strong><span>Professional landing page</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="inner">
-    <span class="label">Pricing</span>
-    <h2 class="big">Straightforward pricing</h2>
-    <p class="sub">No surprise invoices. No confusing packages. Pick what fits and let's get to work.</p>
-    <div class="price-grid">
-
-      <div class="price-card">
-        <h3>Starter</h3>
-        <div class="price-amt">$799<span> / project</span></div>
-        <p class="price-desc">Great for new businesses that need a clean, professional site up fast without a big investment.</p>
-        <ul class="price-list">
-          <li>Up to 3 pages</li><li>Mobile responsive</li><li>Contact form</li>
-          <li>Domain &amp; hosting setup</li><li>2-week delivery</li>
-        </ul>
-        <a class="btn btn-outline" href="#contact">Get started</a>
-      </div>
-
-      <div class="price-card feat">
-        <div class="price-badge">Most popular</div>
-        <h3>Business</h3>
-        <div class="price-amt">$1,499<span> / project</span></div>
-        <p class="price-desc">The complete package for businesses ready to stand out, rank on Google, and convert visitors.</p>
-        <ul class="price-list">
-          <li>Up to 6 pages</li><li>Custom design</li><li>SEO setup</li>
-          <li>Google Maps integration</li><li>Speed optimized</li><li>3-week delivery</li>
-        </ul>
-        <a class="btn btn-fill" href="#contact">Get started</a>
-      </div>
-
-      <div class="price-card">
-        <h3>Maintenance</h3>
-        <div class="price-amt">$99<span> / mo</span></div>
-        <p class="price-desc">We keep your site updated, secure, and backed up every month so you never have to think about it.</p>
-        <ul class="price-list">
-          <li>Content updates</li><li>Security monitoring</li><li>Monthly backups</li>
-          <li>Priority support</li><li>Performance checks</li>
-        </ul>
-        <a class="btn btn-outline" href="#contact">Get started</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="inner">
-    <span class="label">About us</span>
-    <div class="about-layout">
-
-      <div class="about-left">
-        <div class="about-card-main">
-          <div class="about-tags">
-            <span class="about-tag">🌵 Born in the RGV</span>
-            <span class="about-tag">💬 Bilingual</span>
-            <span class="about-tag">💻 Self-taught</span>
-          </div>
-          <div class="about-nums">
-            <div class="about-num-box"><div class="about-num">RGV</div><div class="about-num-l">Where we're from</div></div>
-            <div class="about-num-box"><div class="about-num">2</div><div class="about-num-l">Founders</div></div>
-            <div class="about-num-box"><div class="about-num">ES</div><div class="about-num-l">En español también</div></div>
-            <div class="about-num-box"><div class="about-num">$0</div><div class="about-num-l">Hidden fees</div></div>
-          </div>
-        </div>
-        <div class="about-accent">
-          <span style="font-size:1.5rem">📍</span>
-          <p>We're not a big agency from Austin or Dallas — we're your neighbors, and we treat your business like it's our own.</p>
-        </div>
-      </div>
-
-      <div class="about-right">
-        <h2>Started here.<br><em>Built for here.</em></h2>
-        <p>We grew up in the Rio Grande Valley. We went to school here, eat here, and know what it takes for a local business to stand out in this market. That perspective isn't something you can outsource — and it shows in every site we build.</p>
-        <p>We started RGV Sites For You because too many Valley businesses had outdated websites — or no website at all — while paying big-city prices. We wanted to fix that.</p>
-        <div class="about-vals">
-          <div class="about-val"><span class="v-ico">🤝</span><div><strong>You own everything</strong><span>Your domain, your code, your content. No subscriptions, no lock-in — ever.</span></div></div>
-          <div class="about-val"><span class="v-ico">🗣️</span><div><strong>We speak your language</strong><span>Literally. English or Spanish — whichever is more comfortable for you.</span></div></div>
-          <div class="about-val"><span class="v-ico">⚡</span><div><strong>No fluff, just results</strong><span>We skip the corporate process and focus on building a site that works for your business.</span></div></div>
-        </div>
-        <a class="btn btn-fill" href="#contact" style="margin-top:.5rem;align-self:flex-start">Work with us</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="inner">
-    <span class="label">Contact</span>
-    <h2 class="big">Let's build something together</h2>
-    <p class="sub">Tell us about your business. We'll get back to you within 24 hours with a free quote — no pressure, no commitment.</p>
-    <div class="contact-box">
-      <div class="contact-info">
-        <div class="c-item"><div class="c-ico">📧</div><div class="c-text"><strong>Email</strong><span>hello@rgvsitesforyou.com</span></div></div>
-        <div class="c-item"><div class="c-ico">📍</div><div class="c-text"><strong>Location</strong><span>Rio Grande Valley, TX</span></div></div>
-        <div class="c-item"><div class="c-ico">🕐</div><div class="c-text"><strong>Response time</strong><span>Within 24 hours</span></div></div>
-        <div class="c-item"><div class="c-ico">💬</div><div class="c-text"><strong>Languages</strong><span>English &amp; Spanish</span></div></div>
-      </div>
-      <div class="contact-form">
-        <input type="text" placeholder="Your name">
-        <input type="email" placeholder="your@email.com">
-        <input type="text" placeholder="Your business name">
-        <textarea placeholder="Tell us about your project — what kind of site do you need?"></textarea>
-        <button class="btn btn-fill">Send message</button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span data-en>What we build</span><span data-es>Lo que construimos</span></div>
+      <h2><span data-en>Three ways to get online</span><span data-es>Tres formas de estar en línea</span></h2>
+      <p><span data-en>Pick a starting point — every option ends with a site that's actually yours.</span><span data-es>Elige un punto de partida — toda opción termina en un sitio que realmente es tuyo.</span></p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="mono">01</span>
+        <h3><span data-en>Template site</span><span data-es>Sitio con plantilla</span></h3>
+        <p><span data-en>Start from one of our ready-made designs, customized with your photos, colors, and copy. Fastest and most affordable way to launch.</span><span data-es>Empieza con uno de nuestros diseños listos, personalizado con tus fotos, colores y textos. La forma más rápida y económica de lanzar.</span></p>
+      </div>
+      <div class="service-card">
+        <span class="mono">02</span>
+        <h3><span data-en>Custom build</span><span data-es>Diseño a medida</span></h3>
+        <p><span data-en>A site designed from scratch around your business — layout, structure, and features built to match exactly what you need.</span><span data-es>Un sitio diseñado desde cero para tu negocio — diseño, estructura y funciones hechas a la medida.</span></p>
+      </div>
+      <div class="service-card">
+        <span class="mono">03</span>
+        <h3><span data-en>Domain &amp; hosting setup</span><span data-es>Dominio y alojamiento</span></h3>
+        <p><span data-en>Already have a site? We'll register your domain, connect your DNS, and get HTTPS running so it's secure and easy to find.</span><span data-es>¿Ya tienes un sitio? Registramos tu dominio, conectamos el DNS y activamos HTTPS para que sea seguro y fácil de encontrar.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portafolio">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span data-en>Portfolio</span><span data-es>Portafolio</span></div>
+      <h2><span data-en>Templates ready to customize</span><span data-es>Plantillas listas para personalizar</span></h2>
+      <p><span data-en>Each one is a real, working site — swap in your own photos, menu, or products and it's ready to launch.</span><span data-es>Cada una es un sitio real y funcional — cambia tus propias fotos, menú o productos y está lista para lanzar.</span></p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="chrome portfolio-card pf-1">
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">lastacita-restaurant.com</div>
+        </div>
+        <div class="chrome-screen">
+          <div>
+            <div class="tag mono" data-en>RESTAURANT</div>
+            <div class="tag mono" data-es>RESTAURANTE</div>
+            <h4><span data-en>Full menu &amp; ordering</span><span data-es>Menú completo y pedidos</span></h4>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div>
+            <h5><span data-en>Restaurant Template</span><span data-es>Plantilla de Restaurante</span></h5>
+            <span><span data-en>Menu, hours, reservations</span><span data-es>Menú, horarios, reservaciones</span></span>
+          </div>
+          <a href="#contacto"><span data-en>View demo →</span><span data-es>Ver demo →</span></a>
+        </div>
+      </div>
+
+      <div class="chrome portfolio-card pf-2">
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">valleyhomeservices.com</div>
+        </div>
+        <div class="chrome-screen">
+          <div>
+            <div class="tag mono" data-en>SERVICE BUSINESS</div>
+            <div class="tag mono" data-es>NEGOCIO DE SERVICIOS</div>
+            <h4><span data-en>Booking &amp; service areas</span><span data-es>Citas y áreas de servicio</span></h4>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div>
+            <h5><span data-en>Service Business Template</span><span data-es>Plantilla de Negocio de Servicios</span></h5>
+            <span><span data-en>Quote form, service map, reviews</span><span data-es>Formulario, mapa, reseñas</span></span>
+          </div>
+          <a href="#contacto"><span data-en>View demo →</span><span data-es>Ver demo →</span></a>
+        </div>
+      </div>
+
+      <div class="chrome portfolio-card pf-3">
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">rgvboutiqueshop.com</div>
+        </div>
+        <div class="chrome-screen">
+          <div>
+            <div class="tag mono" data-en>RETAIL</div>
+            <div class="tag mono" data-es>TIENDA</div>
+            <h4><span data-en>Product gallery</span><span data-es>Galería de productos</span></h4>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div>
+            <h5><span data-en>Retail Template</span><span data-es>Plantilla de Tienda</span></h5>
+            <span><span data-en>Catalog, hours, directions</span><span data-es>Catálogo, horario, direcciones</span></span>
+          </div>
+          <a href="#contacto"><span data-en>View demo →</span><span data-es>Ver demo →</span></a>
+        </div>
+      </div>
+
+      <div class="chrome portfolio-card pf-4">
+        <div class="chrome-bar">
+          <div class="chrome-dots"><span></span><span></span><span></span></div>
+          <div class="chrome-url mono">yourname-portfolio.com</div>
+        </div>
+        <div class="chrome-screen">
+          <div>
+            <div class="tag mono" data-en>PORTFOLIO / EVENTS</div>
+            <div class="tag mono" data-es>PORTAFOLIO / EVENTOS</div>
+            <h4><span data-en>Photos &amp; a single-page story</span><span data-es>Fotos e historia de una sola página</span></h4>
+          </div>
+        </div>
+        <div class="portfolio-meta">
+          <div>
+            <h5><span data-en>Portfolio / Event Template</span><span data-es>Plantilla de Portafolio / Eventos</span></h5>
+            <span><span data-en>Gallery, timeline, RSVP</span><span data-es>Galería, cronología, RSVP</span></span>
+          </div>
+          <a href="#contacto"><span data-en>View demo →</span><span data-es>Ver demo →</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="swap-note">
+      <span data-en>These cards use colored placeholders instead of real screenshots. To drop in your actual template photos, replace each <code>.chrome-screen</code> div's content with <code>&lt;img src="images/restaurant-template.png" alt="Restaurant template preview"&gt;</code> and remove the gradient background from its matching CSS class (<code>.pf-1</code>, <code>.pf-2</code>, etc.) in the <code>&lt;style&gt;</code> section.</span>
+      <span data-es>Estas tarjetas usan marcadores de color en vez de capturas reales. Para poner tus fotos reales, reemplaza el contenido de cada <code>.chrome-screen</code> con <code>&lt;img src="images/restaurant-template.png" alt="Vista previa"&gt;</code> y quita el fondo degradado de su clase CSS correspondiente (<code>.pf-1</code>, <code>.pf-2</code>, etc.) en la sección <code>&lt;style&gt;</code>.</span>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span data-en>How it works</span><span data-es>Cómo funciona</span></div>
+      <h2><span data-en>From first message to launch</span><span data-es>Del primer mensaje al lanzamiento</span></h2>
+      <p><span data-en>Four steps, start to finish. Most template sites launch in under two weeks.</span><span data-es>Cuatro pasos, de principio a fin. La mayoría de los sitios con plantilla se lanzan en menos de dos semanas.</span></p>
+    </div>
+    <div class="process-list">
+      <div class="step">
+        <span class="num">01</span>
+        <h4><span data-en>Consult</span><span data-es>Consulta</span></h4>
+        <p><span data-en>We talk through your business, your customers, and what the site needs to do.</span><span data-es>Hablamos sobre tu negocio, tus clientes y lo que el sitio necesita hacer.</span></p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h4><span data-en>Design</span><span data-es>Diseño</span></h4>
+        <p><span data-en>You pick a template or we sketch a custom layout, then review it together.</span><span data-es>Eliges una plantilla o diseñamos algo a medida, y lo revisamos juntos.</span></p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h4><span data-en>Build</span><span data-es>Construcción</span></h4>
+        <p><span data-en>Two rounds of revisions included, so it looks right before it goes live.</span><span data-es>Dos rondas de revisiones incluidas, para que quede bien antes de publicarse.</span></p>
+      </div>
+      <div class="step">
+        <span class="num">04</span>
+        <h4><span data-en>Launch</span><span data-es>Lanzamiento</span></h4>
+        <p><span data-en>Domain, hosting, and HTTPS set up — your site goes live under your own name.</span><span data-es>Dominio, alojamiento y HTTPS configurados — tu sitio se publica bajo tu propio nombre.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="eyebrow"><span data-en>Get in touch</span><span data-es>Ponte en contacto</span></div>
+      <h2><span data-en>Let's build your site</span><span data-es>Construyamos tu sitio</span></h2>
+      <p><span data-en>Tell us a bit about your business and what you're looking for — we'll follow up with a quote, usually within a day or two.</span><span data-es>Cuéntanos sobre tu negocio y lo que buscas — te responderemos con una cotización, normalmente en uno o dos días.</span></p>
+      <div class="contact-list">
+        <div><span class="mono">EMAIL</span> hello@rgvsitesforyou.com</div>
+        <div><span class="mono"><span data-en>AREA</span><span data-es>ÁREA</span></span> <span data-en>Rio Grande Valley, TX</span><span data-es>Valle del Río Grande, TX</span></div>
+        <div><span class="mono"><span data-en>LANGUAGES</span><span data-es>IDIOMAS</span></span> English · Español</div>
+      </div>
+    </div>
+    <form onsubmit="event.preventDefault(); alert(document.documentElement.lang==='es' ? '¡Gracias! Te contactaremos pronto.' : 'Thanks! We\'ll be in touch soon.');">
+      <input type="text" placeholder="Name / Nombre" required>
+      <input type="email" placeholder="Email / Correo" required>
+      <input type="text" placeholder="Business name / Nombre del negocio">
+      <textarea placeholder="Tell us about your project / Cuéntanos sobre tu proyecto"></textarea>
+      <button class="btn" type="submit">
+        <span data-en>Send message</span><span data-es>Enviar mensaje</span>
+      </button>
+    </form>
+  </div>
+</section>
+
 <footer>
-  <div class="footer-logo"><span>RGV</span> Sites For You</div>
-  <p>© 2025 RGV Sites For You — Rio Grande Valley, TX</p>
+  <div class="wrap footer-row">
+    <p>© 2026 RGV Sites For You.<span data-en> Built in the Rio Grande Valley.</span><span data-es> Hecho en el Valle del Río Grande.</span></p>
+    <p class="mono">rgvsitesforyou.com</p>
+  </div>
 </footer>
 
 <script>
-  // Mobile menu
-  function toggleMenu(){
-    document.getElementById('mobileMenu').classList.toggle('open')
-  }
-  function closeMenu(){
-    document.getElementById('mobileMenu').classList.remove('open')
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
   }
 
-  // Active nav highlight on scroll
-  const sections = document.querySelectorAll('section[id]')
-  const navLinks = document.querySelectorAll('.nav-links a')
-
-  function setActive(){
-    let current = ''
-    sections.forEach(s => {
-      if(window.scrollY >= s.offsetTop - 80) current = s.id
-    })
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current)
-    })
-  }
-
-  window.addEventListener('scroll', setActive)
-  setActive()
-
-  // Smooth scroll offset for fixed nav
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'))
-      if(target){
-        e.preventDefault()
-        window.scrollTo({top: target.offsetTop - 64, behavior: 'smooth'})
-      }
-    })
-  })
+  // hero chrome slideshow
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.chrome-dots-nav span');
+  const urls = ['restaurant-example.com', 'yourservice-example.com', 'yourshop-example.com'];
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    document.getElementById('chrome-url').textContent = urls[current];
+  }, 3800);
 </script>
+
 </body>
 </html>
