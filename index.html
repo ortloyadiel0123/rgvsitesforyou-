@@ -543,11 +543,11 @@
         <div><span class="mono"><span data-en>LANGUAGES</span><span data-es>IDIOMAS</span></span> English · Español</div>
       </div>
     </div>
-    <form onsubmit="event.preventDefault(); alert(document.documentElement.lang==='es' ? '¡Gracias! Te contactaremos pronto.' : 'Thanks! We\'ll be in touch soon.');">
-      <input type="text" placeholder="Name / Nombre" required>
-      <input type="email" placeholder="Email / Correo" required>
-      <input type="text" placeholder="Business name / Nombre del negocio">
-      <textarea placeholder="Tell us about your project / Cuéntanos sobre tu proyecto"></textarea>
+    <form id="quote-form">
+      <input type="text" name="from_name" placeholder="Name / Nombre" required>
+      <input type="email" name="from_email" placeholder="Email / Correo" required>
+      <input type="text" name="business_name" placeholder="Business name / Nombre del negocio">
+      <textarea name="message" placeholder="Tell us about your project / Cuéntanos sobre tu proyecto"></textarea>
       <button class="btn" type="submit">
         <span data-en>Send message</span><span data-es>Enviar mensaje</span>
       </button>
@@ -562,6 +562,28 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  emailjs.init("7SR_zu6NO_u0TNU2W");
+</script>
+<script>
+  document.getElementById('quote-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    emailjs.sendForm('service_uq90rr6', 'template_b4jloou', this)
+      .then(() => {
+        alert(document.documentElement.lang === 'es'
+          ? '¡Gracias! Te contactaremos pronto.'
+          : "Thanks! We'll be in touch soon.");
+        this.reset();
+      })
+      .catch((err) => {
+        alert(document.documentElement.lang === 'es'
+          ? 'Hubo un error. Intenta de nuevo.'
+          : 'Something went wrong. Please try again.');
+        console.error('EmailJS error:', err);
+      });
+  });
+</script>
 <script>
   function setLang(lang){
     document.documentElement.lang = lang;
