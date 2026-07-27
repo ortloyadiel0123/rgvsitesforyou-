@@ -4,9 +4,78 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RGV Sites For You — Websites for the Rio Grande Valley</title>
+<meta name="description" content="Custom bilingual websites for restaurants, shops, and service businesses in Mission, McAllen, Edinburg, and the Rio Grande Valley. Template sites from $900, custom builds, hosting & domain setup included.">
+<link rel="canonical" href="https://rgvsitesforyou.com/">
+<meta property="og:title" content="RGV Sites For You — Websites for the Rio Grande Valley">
+<meta property="og:description" content="Custom, fast-loading bilingual websites for restaurants, shops, and local service businesses across Mission, McAllen, Edinburg, and beyond.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rgvsitesforyou.com/">
+<meta property="og:image" content="https://rgvsitesforyou.com/restaurant-template.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_MX">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RGV Sites For You — Websites for the Rio Grande Valley">
+<meta name="twitter:description" content="Bilingual, fast-loading websites for restaurants, shops, and service businesses in the Rio Grande Valley.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "RGV Sites For You",
+  "url": "https://rgvsitesforyou.com/",
+  "email": "hello@rgvsitesforyou.com",
+  "areaServed": ["Mission, TX", "McAllen, TX", "Edinburg, TX", "Rio Grande Valley, TX"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "priceRange": "$900-$2600",
+  "availableLanguage": ["English", "Spanish"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does a website cost with RGV Sites For You?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Plans start at $900 for a 1-3 page Basic site, $1,900 for a Standard site with client-page interactivity, and $2,600 for a Premium site with online booking, better SEO, speed optimization, and 3D design elements."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build websites in Spanish as well as English?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every site can be built bilingually in English and Spanish on request."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to launch a website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most template-based sites launch in under two weeks, following a four-step process: consult, design, build, and launch."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas of the Rio Grande Valley do you serve?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We build websites for businesses across Mission, McAllen, Edinburg, and the wider Rio Grande Valley, Texas."
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root{
     --ink:#1E2A28;
@@ -134,7 +203,7 @@
   .chrome-bar{
     display:flex; align-items:center; gap:8px;
     padding:10px 14px;
-    background:#EDE7D3;t4w
+    background:#EDE7D3;
     border-bottom:1px solid var(--line);
   }
   .chrome-dots{ display:flex; gap:6px; }
@@ -183,7 +252,7 @@
     color:#fff;
   }
   .slide.active{ opacity:1; }
-  .slide h4{ font-family:'Fraunces', serif; font-size:24px; color:#fff; margin-bottom:6px; }
+  .slide .slide-caption{ font-family:'Fraunces', serif; font-size:24px; font-weight:600; color:#fff; margin-bottom:6px; }
   .slide p{ font-size:12.5px; opacity:0.9; }
   .slide-1{ background:linear-gradient(160deg,#5B3A2A,#C0562E 65%); }
   .slide-2{ background:linear-gradient(160deg,#14332A,#2F6F5E 65%); }
@@ -238,7 +307,7 @@
     display:flex; align-items:center; justify-content:space-between;
     padding:18px 20px; border-top:1px solid var(--line);
   }
-  .portfolio-meta h5{ font-size:15.5px; font-weight:600; margin-bottom:3px; }
+  .portfolio-meta h3{ font-size:15.5px; font-weight:600; margin-bottom:3px; font-family:'Inter', sans-serif; color:var(--ink); letter-spacing:normal; }
   .portfolio-meta span{ font-size:13px; color:rgba(30,42,40,0.6); }
   .portfolio-meta a{ font-size:13px; font-weight:600; color:var(--jade); text-decoration:none; white-space:nowrap; }
   .swap-note{
@@ -309,6 +378,12 @@
     background:var(--paper); border:1px dashed var(--line); border-radius:10px; padding:16px 18px;
   }
 
+  /* ---------- FAQ ---------- */
+  .faq-list{ max-width:760px; margin:48px auto 0; display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .faq-item{ background:var(--paper-soft); padding:26px 28px; }
+  .faq-item h3{ font-size:17px; margin-bottom:8px; }
+  .faq-item p{ font-size:14.5px; color:rgba(30,42,40,0.72); }
+
   /* ---------- CONTACT ---------- */
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
   @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
@@ -358,6 +433,9 @@
       </a>
       <a href="#planes">
         <span data-en>Plans</span><span data-es>Planes</span>
+      </a>
+      <a href="#faq">
+        <span data-en>FAQ</span><span data-es>Preguntas</span>
       </a>
       <a href="#contacto">
         <span data-en>Contact</span><span data-es>Contacto</span>
@@ -414,17 +492,17 @@
           <div class="slide slide-1 active">
             <div class="tag mono" data-en>RESTAURANT TEMPLATE</div>
             <div class="tag mono" data-es>PLANTILLA DE RESTAURANTE</div>
-            <h4><span data-en>Full menu, hours &amp; online ordering link</span><span data-es>Menú completo, horarios y enlace para pedidos</span></h4>
+            <p class="slide-caption"><span data-en>Full menu, hours &amp; online ordering link</span><span data-es>Menú completo, horarios y enlace para pedidos</span></p>
           </div>
           <div class="slide slide-2">
             <div class="tag mono" data-en>SERVICE BUSINESS TEMPLATE</div>
             <div class="tag mono" data-es>PLANTILLA DE NEGOCIO DE SERVICIOS</div>
-            <h4><span data-en>Booking form &amp; service area map</span><span data-es>Formulario de citas y mapa de servicio</span></h4>
+            <p class="slide-caption"><span data-en>Booking form &amp; service area map</span><span data-es>Formulario de citas y mapa de servicio</span></p>
           </div>
           <div class="slide slide-3">
             <div class="tag mono" data-en>RETAIL TEMPLATE</div>
             <div class="tag mono" data-es>PLANTILLA DE TIENDA</div>
-            <h4><span data-en>Product gallery &amp; store hours</span><span data-es>Galería de productos y horario</span></h4>
+            <p class="slide-caption"><span data-en>Product gallery &amp; store hours</span><span data-es>Galería de productos y horario</span></p>
           </div>
           <div class="chrome-dots-nav">
             <span class="active"></span><span></span><span></span>
@@ -476,11 +554,11 @@
           <div class="chrome-url mono">restaurant-name.com</div>
         </div>
         <div class="chrome-screen">
-          <img src="restaurant-template.png" alt="Restaurant template preview">
+          <img src="restaurant-template.png" alt="Restaurant website template with online menu and ordering link, built by RGV Sites For You">
         </div>
         <div class="portfolio-meta">
           <div>
-            <h5><span data-en>Restaurant Template</span><span data-es>Plantilla de Restaurante</span></h5>
+            <h3><span data-en>Restaurant Template</span><span data-es>Plantilla de Restaurante</span></h3>
             <span><span data-en>Menu, hours, reservations</span><span data-es>Menú, horarios, reservaciones</span></span>
           </div>
           <a href="https://restaurant-website-templates.github.io/Premium-Restaurant-Template-2/" target="_blank" rel="noopener">
@@ -495,11 +573,11 @@
           <div class="chrome-url mono">valleyhomeservices.com</div>
         </div>
         <div class="chrome-screen">
-          <img src="valley-home-services.png" alt="Service business template preview">
+          <img src="valley-home-services.png" alt="Service business website template with booking form and service-area map for Rio Grande Valley businesses">
         </div>
         <div class="portfolio-meta">
           <div>
-            <h5><span data-en>Service Business Template</span><span data-es>Plantilla de Negocio de Servicios</span></h5>
+            <h3><span data-en>Service Business Template</span><span data-es>Plantilla de Negocio de Servicios</span></h3>
             <span><span data-en>Quote form, service map, reviews</span><span data-es>Formulario, mapa, reseñas</span></span>
           </div>
           <a href="https://ortloyadiel0123.github.io/Valley-Home-Services-Template/" target="_blank" rel="noopener">
@@ -514,11 +592,11 @@
           <div class="chrome-url mono">rgvboutiqueshop.com</div>
         </div>
         <div class="chrome-screen">
-          <img src="rgv-boutique-shop.png" alt="Retail template preview">
+          <img src="rgv-boutique-shop.png" alt="Retail store website template with product gallery and store hours">
         </div>
         <div class="portfolio-meta">
           <div>
-            <h5><span data-en>Retail Template</span><span data-es>Plantilla de Tienda</span></h5>
+            <h3><span data-en>Retail Template</span><span data-es>Plantilla de Tienda</span></h3>
             <span><span data-en>Catalog, hours, directions</span><span data-es>Catálogo, horario, direcciones</span></span>
           </div>
           <a href="https://ortloyadiel0123.github.io/RGV-Boutique-shop-template/" target="_blank" rel="noopener">
@@ -533,11 +611,11 @@
           <div class="chrome-url mono">yourname-portfolio.com</div>
         </div>
         <div class="chrome-screen">
-          <img src="portfolio-event-template.png" alt="Portfolio and event template preview">
+          <img src="portfolio-event-template.png" alt="Portfolio and event website template with photo gallery, timeline, and RSVP form">
         </div>
         <div class="portfolio-meta">
           <div>
-            <h5><span data-en>Portfolio / Event Template</span><span data-es>Plantilla de Portafolio / Eventos</span></h5>
+            <h3><span data-en>Portfolio / Event Template</span><span data-es>Plantilla de Portafolio / Eventos</span></h3>
             <span><span data-en>Gallery, timeline, RSVP</span><span data-es>Galería, cronología, RSVP</span></span>
           </div>
           <a href="https://ortloyadiel0123.github.io/Portfolio-event-template/" target="_blank" rel="noopener">
@@ -648,6 +726,34 @@
     <p class="plans-note">
       <span data-en>Not sure which fits? Tell us about your business and we'll recommend a tier.</span><span data-es>¿No sabes cuál te conviene? Cuéntanos sobre tu negocio y te recomendamos un nivel.</span>
     </p>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow"><span data-en>FAQ</span><span data-es>Preguntas Frecuentes</span></div>
+      <h2><span data-en>Common questions</span><span data-es>Preguntas comunes</span></h2>
+      <p><span data-en>Quick answers about pricing, timeline, and how we work.</span><span data-es>Respuestas rápidas sobre precios, tiempos y cómo trabajamos.</span></p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h3><span data-en>How much does a website cost with RGV Sites For You?</span><span data-es>¿Cuánto cuesta un sitio web con RGV Sites For You?</span></h3>
+        <p><span data-en>Plans start at $900 for a 1-3 page Basic site, $1,900 for a Standard site with client-page interactivity, and $2,600 for a Premium site with online booking, better SEO, speed optimization, and 3D design elements.</span><span data-es>Los planes comienzan en $900 para un sitio Básico de 1-3 páginas, $1,900 para un sitio Estándar con interactividad para el cliente, y $2,600 para un sitio Premium con reservaciones en línea, mejor SEO, optimización de velocidad y elementos de diseño 3D.</span></p>
+      </div>
+      <div class="faq-item">
+        <h3><span data-en>Do you build websites in Spanish as well as English?</span><span data-es>¿Construyen sitios web en español además de inglés?</span></h3>
+        <p><span data-en>Yes. Every site can be built bilingually in English and Spanish on request.</span><span data-es>Sí. Todo sitio se puede construir de forma bilingüe en inglés y español si lo solicitas.</span></p>
+      </div>
+      <div class="faq-item">
+        <h3><span data-en>How long does it take to launch a website?</span><span data-es>¿Cuánto tiempo toma lanzar un sitio web?</span></h3>
+        <p><span data-en>Most template-based sites launch in under two weeks, following a four-step process: consult, design, build, and launch.</span><span data-es>La mayoría de los sitios con plantilla se lanzan en menos de dos semanas, siguiendo un proceso de cuatro pasos: consulta, diseño, construcción y lanzamiento.</span></p>
+      </div>
+      <div class="faq-item">
+        <h3><span data-en>What areas of the Rio Grande Valley do you serve?</span><span data-es>¿Qué áreas del Valle del Río Grande atienden?</span></h3>
+        <p><span data-en>We build websites for businesses across Mission, McAllen, Edinburg, and the wider Rio Grande Valley, Texas.</span><span data-es>Construimos sitios web para negocios en Mission, McAllen, Edinburg y todo el Valle del Río Grande, Texas.</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
