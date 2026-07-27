@@ -257,7 +257,300 @@
   .step .num{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--gold); display:block; margin-bottom:14px; }
   .step h4{ font-family:'Fraunces', serif; font-size:18px; color:var(--paper-soft); margin-bottom:8px; }
   .step p{ font-size:13.5px; opacity:0.75; }
+<!--
+  ===================================================================
+  WEBSITE PLANS SECTION — for rgvsitesforyou.com
+  ===================================================================
+  Drop this whole block in where you want it to appear (e.g. right
+  after your "Templates ready to customize" / #portafolio section,
+  or right before "Get in touch" / #contacto).
 
+  LANGUAGE TOGGLE NOTE:
+  Your live site interleaves English/Spanish and toggles with the
+  EN/ES switch in the nav. I don't have your actual JS/CSS for that
+  toggle, so I built this with the same pattern most sites like yours
+  use: every bit of text has a .en and .es span, and a body class
+  (.lang-es) controls which one shows. If your real toggle uses
+  different class names or a data-lang attribute, send me the JS file
+  (or just the toggle function) and I'll wire this section to match
+  exactly — right now the two languages will show stacked on top of
+  each other until that hook is connected.
+  ===================================================================
+-->
+
+<section id="planes" class="plans-section">
+  <div class="plans-inner">
+
+    <p class="plans-eyebrow">
+      <span class="en">Pricing</span><span class="es">Precios</span>
+    </p>
+
+    <h2 class="plans-heading">
+      <span class="en">Website plans built for <em>where you're starting</em></span>
+      <span class="es">Planes de sitio web hechos para <em>dónde estás empezando</em></span>
+    </h2>
+
+    <p class="plans-sub">
+      <span class="en">Three tiers, each one building on the last — pick the scope that matches your business today.</span>
+      <span class="es">Tres niveles, cada uno construyendo sobre el anterior — elige el alcance que se ajusta a tu negocio hoy.</span>
+    </p>
+
+    <div class="plans-grid">
+
+      <!-- BASIC -->
+      <article class="plan-card">
+        <span class="plan-num">01</span>
+        <h3 class="plan-name">Basic <span class="en">Plan</span><span class="es">Plan Básico</span></h3>
+        <div class="plan-price"><span>$900</span></div>
+        <ul class="plan-features">
+          <li><span class="en">1–3 pages</span><span class="es">1–3 páginas</span></li>
+          <li><span class="en">Home, Menu, About</span><span class="es">Inicio, Menú, Acerca de</span></li>
+          <li><span class="en">Contact form</span><span class="es">Formulario de contacto</span></li>
+          <li><span class="en">Brochure style</span><span class="es">Estilo folleto</span></li>
+        </ul>
+        <a href="#contacto" class="plan-cta">
+          <span class="en">Start with Basic →</span><span class="es">Empezar con Básico →</span>
+        </a>
+      </article>
+
+      <!-- STANDARD -->
+      <article class="plan-card">
+        <span class="plan-num">02</span>
+        <h3 class="plan-name">Standard <span class="en">Plan</span><span class="es">Plan Estándar</span></h3>
+        <div class="plan-price"><span>$1,900</span></div>
+        <ul class="plan-features">
+          <li><span class="en">2–6 pages</span><span class="es">2–6 páginas</span></li>
+          <li><span class="en">Home, Menu, About, Contact, FAQ, Testimonials</span><span class="es">Inicio, Menú, Acerca de, Contacto, Preguntas Frecuentes, Testimonios</span></li>
+          <li><span class="en">Client-page interactivity</span><span class="es">Interactividad con el cliente</span></li>
+        </ul>
+        <a href="#contacto" class="plan-cta">
+          <span class="en">Start with Standard →</span><span class="es">Empezar con Estándar →</span>
+        </a>
+      </article>
+
+      <!-- PREMIUM -->
+      <article class="plan-card plan-card--featured">
+        <span class="plan-badge">
+          <span class="en">Most popular</span><span class="es">Más popular</span>
+        </span>
+        <span class="plan-num">03</span>
+        <h3 class="plan-name">Premium <span class="en">Plan</span><span class="es">Plan Premium</span></h3>
+        <div class="plan-price"><span>$2,600</span></div>
+        <ul class="plan-features">
+          <li><span class="en">Everything in Standard, plus:</span><span class="es">Todo lo del Estándar, más:</span></li>
+          <li><span class="en">Online reservations / booking</span><span class="es">Reservaciones / citas en línea</span></li>
+          <li><span class="en">Better SEO</span><span class="es">Mejor SEO</span></li>
+          <li><span class="en">Speed optimization</span><span class="es">Optimización de velocidad</span></li>
+          <li><span class="en">3D design elements</span><span class="es">Elementos de diseño 3D</span></li>
+        </ul>
+        <a href="#contacto" class="plan-cta plan-cta--filled">
+          <span class="en">Start with Premium →</span><span class="es">Empezar con Premium →</span>
+        </a>
+      </article>
+
+    </div>
+
+    <p class="plans-footnote">
+      <span class="en">Not sure which fits? Tell us about your business and we'll recommend a tier.</span>
+      <span class="es">¿No sabes cuál te conviene? Cuéntanos sobre tu negocio y te recomendamos un nivel.</span>
+    </p>
+
+  </div>
+</section>
+
+<style>
+  /* Scoped to .plans-section so it won't fight with the rest of your site's CSS */
+
+  .plans-section {
+    padding: 96px 24px;
+    background: linear-gradient(160deg, #eef6f0 0%, #ffffff 55%, #eef6f0 100%);
+    color: #123d2b;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  .plans-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .plans-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #2f8a5f;
+    margin-bottom: 12px;
+  }
+
+  .plans-heading {
+    font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    color: #123d2b;
+  }
+
+  .plans-heading em {
+    font-style: italic;
+    font-weight: 800;
+    color: #2f8a5f;
+  }
+
+  .plans-sub {
+    max-width: 560px;
+    margin: 0 auto 56px;
+    color: #4a6b58;
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    text-align: left;
+  }
+
+  @media (max-width: 880px) {
+    .plans-grid { grid-template-columns: 1fr; }
+  }
+
+  .plan-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #d8e8dd;
+    border-radius: 20px;
+    padding: 36px 28px 32px;
+    box-shadow: 0 12px 30px rgba(15, 42, 82, 0.06);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .plan-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(15, 42, 82, 0.12);
+  }
+
+  .plan-card--featured {
+    background: #123d2b;
+    border-color: #123d2b;
+    color: #fff;
+    box-shadow: 0 18px 40px rgba(15, 42, 82, 0.25);
+  }
+
+  .plan-card--featured .plan-num,
+  .plan-card--featured .plans-sub { color: #a9d4bb; }
+
+  .plan-badge {
+    position: absolute;
+    top: -14px;
+    right: 24px;
+    background: #ffd166;
+    color: #4a3300;
+    font-size: 0.72rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 6px 14px;
+    border-radius: 999px;
+  }
+
+  .plan-num {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #8fbfa2;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+
+  .plan-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 0 0 18px;
+  }
+
+  .plan-price {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    padding: 10px 24px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    width: fit-content;
+  }
+
+  .plan-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 28px;
+    flex-grow: 1;
+  }
+
+  .plan-features li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 0.96rem;
+  }
+
+  .plan-card:not(.plan-card--featured) .plan-features li { color: #3a5a48; }
+
+  .plan-features li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #2f8a5f;
+  }
+
+  .plan-card--featured .plan-features li::before { background: #ffd166; }
+
+  .plan-cta {
+    display: inline-block;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 2px solid #123d2b;
+    color: #123d2b;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .plan-cta:hover { background: #123d2b; color: #fff; }
+
+  .plan-cta--filled {
+    background: #ffd166;
+    border-color: #ffd166;
+    color: #4a3300;
+  }
+
+  .plan-cta--filled:hover { background: #ffdb85; color: #4a3300; }
+
+  .plans-footnote {
+    margin-top: 48px;
+    color: #6b9280;
+    font-size: 0.95rem;
+  }
+
+  /* --- Language toggle scaffolding ---
+     Replace/merge this with however your real EN/ES switch works.
+     Default below: show English, hide Spanish, until .lang-es is
+     added to <body> or <html>. */
+  .plans-section .es { display: none; }
+  body.lang-es .plans-section .en { display: none; }
+  body.lang-es .plans-section .es { display: inline; }
+</style>
   /* ---------- CONTACT ---------- */
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
   @media (max-width:860px){ .contact-grid{ grid-template-columns:1fr; } }
