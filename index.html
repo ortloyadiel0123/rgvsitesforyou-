@@ -774,6 +774,7 @@
       <input type="email" name="from_email" placeholder="Email / Correo" required>
       <input type="text" name="business_name" placeholder="Business name / Nombre del negocio">
       <textarea name="message" placeholder="Tell us about your project / Cuéntanos sobre tu proyecto"></textarea>
+      <input type="text" name="website" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit">
         <span data-en>Send message</span><span data-es>Enviar mensaje</span>
       </button>
@@ -795,6 +796,13 @@
 <script>
   document.getElementById('quote-form').addEventListener('submit', function(e) {
     e.preventDefault();
+
+    // Honeypot check — if this hidden field has anything in it, it's a bot
+    if (this.website.value !== '') {
+      console.log('Bot submission blocked');
+      return;
+    }
+
     emailjs.sendForm('service_uq90rr6', 'template_b4jloou', this)
       .then(() => {
         alert(document.documentElement.lang === 'es'
