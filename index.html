@@ -51,6 +51,14 @@
     },
     {
       "@type": "Question",
+      "name": "Do you offer ongoing maintenance after the site launches?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Every plan — Basic, Standard, or Premium — includes an optional monthly care plan covering updates, hosting, security monitoring, and online booking upkeep for $150/month, with the first month free."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Do you build websites in Spanish as well as English?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -419,6 +427,61 @@
     background:var(--paper); border:1px dashed var(--line); border-radius:10px; padding:16px 18px;
   }
 
+  /* ---------- MAINTENANCE ADD-ON CALLOUT ---------- */
+  .maintenance-callout{
+    margin-top:40px;
+    background:var(--jade-deep);
+    color:var(--paper-soft);
+    border:1.5px solid var(--gold);
+    border-radius:16px;
+    padding:38px 36px;
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    gap:36px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  @media (max-width:860px){ .maintenance-callout{ grid-template-columns:1fr; padding:32px 26px; } }
+
+  .maintenance-badge{
+    position:absolute; top:22px; right:-38px;
+    background:var(--gold); color:var(--jade-deep);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; font-weight:600;
+    letter-spacing:0.06em; text-transform:uppercase;
+    padding:7px 46px; transform:rotate(6deg);
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  }
+  @media (max-width:520px){ .maintenance-badge{ position:static; display:inline-block; transform:none; margin-bottom:14px; padding:6px 16px; } }
+
+  .maintenance-callout .eyebrow{ color:var(--gold); }
+  .maintenance-callout .eyebrow::before{ background:var(--gold); }
+  .maintenance-callout h3{ color:var(--paper-soft); font-size:24px; margin-bottom:12px; }
+  .maintenance-callout p.maintenance-desc{ font-size:15px; color:rgba(251,249,241,0.8); margin-bottom:18px; max-width:420px; }
+
+  .maintenance-price-row{ display:flex; align-items:baseline; gap:10px; margin-bottom:8px; flex-wrap:wrap; }
+  .maintenance-price-row .free-tag{
+    font-family:'Fraunces', serif; font-weight:600; font-size:22px; color:var(--gold);
+  }
+  .maintenance-price-row .then-price{
+    font-family:'IBM Plex Mono', monospace; font-size:14px; color:rgba(251,249,241,0.75);
+  }
+  .maintenance-finePrint{ font-size:12.5px; color:rgba(251,249,241,0.55); }
+
+  .maintenance-features{ list-style:none; display:flex; flex-direction:column; gap:12px; margin-bottom:22px; }
+  .maintenance-features li{
+    display:flex; align-items:flex-start; gap:10px; font-size:14.5px; color:rgba(251,249,241,0.92);
+  }
+  .maintenance-features li::before{
+    content:"✓"; color:var(--gold); font-weight:700; font-size:13px; flex-shrink:0; margin-top:2px;
+  }
+  .maintenance-callout .btn{ background:var(--gold); color:var(--jade-deep); }
+  .maintenance-callout .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 20px rgba(227,178,60,0.3); }
+  .maintenance-applies{
+    margin-top:14px; font-size:12.5px; color:rgba(251,249,241,0.6);
+  }
+
   /* ---------- FAQ ---------- */
   .faq-list{ max-width:760px; margin:48px auto 0; display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
   .faq-item{ background:var(--paper-soft); padding:26px 28px; }
@@ -782,6 +845,45 @@
 
     </div>
 
+    <div class="maintenance-callout">
+      <div class="maintenance-badge">
+        <span data-en>First Month Free</span><span data-es>Primer Mes Gratis</span>
+      </div>
+
+      <div>
+        <div class="eyebrow"><span data-en>Included with every plan</span><span data-es>Incluido con cada plan</span></div>
+        <h3><span data-en>Keep it running, worry-free</span><span data-es>Mantenlo funcionando, sin preocupaciones</span></h3>
+        <p class="maintenance-desc">
+          <span data-en>A website is never really "done" — it needs updates, security patches, and someone keeping an eye on it. Our monthly care plan handles that for you, on every tier: Basic, Standard, or Premium.</span>
+          <span data-es>Un sitio web nunca está realmente "terminado" — necesita actualizaciones, parches de seguridad y alguien que lo supervise. Nuestro plan mensual de cuidado se encarga de eso, en cualquier nivel: Básico, Estándar o Premium.</span>
+        </p>
+        <div class="maintenance-price-row">
+          <span class="free-tag"><span data-en>Free your first month</span><span data-es>Gratis tu primer mes</span></span>
+          <span class="then-price"><span data-en>then $150/month</span><span data-es>luego $150/mes</span></span>
+        </div>
+        <p class="maintenance-finePrint">
+          <span data-en>No long-term contract — cancel anytime.</span>
+          <span data-es>Sin contrato a largo plazo — cancela cuando quieras.</span>
+        </p>
+      </div>
+
+      <div>
+        <ul class="maintenance-features">
+          <li><span data-en>Monthly content &amp; feature updates</span><span data-es>Actualizaciones mensuales de contenido y funciones</span></li>
+          <li><span data-en>Hosting included</span><span data-es>Alojamiento incluido</span></li>
+          <li><span data-en>Ongoing security monitoring &amp; patches</span><span data-es>Monitoreo de seguridad y parches continuos</span></li>
+          <li><span data-en>Online booking / reservations kept running</span><span data-es>Reservaciones / citas en línea siempre funcionando</span></li>
+        </ul>
+        <a href="#contacto" class="btn">
+          <span data-en>Claim your free first month</span><span data-es>Reclama tu primer mes gratis</span>
+        </a>
+        <p class="maintenance-applies">
+          <span data-en>Applies automatically to Basic, Standard, and Premium plans.</span>
+          <span data-es>Se aplica automáticamente a los planes Básico, Estándar y Premium.</span>
+        </p>
+      </div>
+    </div>
+
     <p class="plans-note">
       <span data-en>Not sure which fits? Tell us about your business and we'll recommend a tier.</span><span data-es>¿No sabes cuál te conviene? Cuéntanos sobre tu negocio y te recomendamos un nivel.</span>
     </p>
@@ -799,6 +901,10 @@
       <div class="faq-item">
         <h3><span data-en>How much does a website cost with RGV Sites For You?</span><span data-es>¿Cuánto cuesta un sitio web con RGV Sites For You?</span></h3>
         <p><span data-en>Plans start at $700 for a 1-3 page Basic site, $1,700 for a Standard site with client-page interactivity, and $2,400 for a Premium site with online booking, better SEO, speed optimization, and 3D design elements.</span><span data-es>Los planes comienzan en $700 para un sitio Básico de 1-3 páginas, $1,700 para un sitio Estándar con interactividad para el cliente, y $2,400 para un sitio Premium con reservaciones en línea, mejor SEO, optimización de velocidad y elementos de diseño 3D.</span></p>
+      </div>
+      <div class="faq-item">
+        <h3><span data-en>Do you offer ongoing maintenance after the site launches?</span><span data-es>¿Ofrecen mantenimiento continuo después del lanzamiento?</span></h3>
+        <p><span data-en>Yes. Every plan — Basic, Standard, or Premium — includes an optional monthly care plan covering updates, hosting, security monitoring, and online booking upkeep for $150/month, with the first month free.</span><span data-es>Sí. Cada plan — Básico, Estándar o Premium — incluye un plan mensual opcional de cuidado que cubre actualizaciones, alojamiento, monitoreo de seguridad y mantenimiento de reservaciones en línea por $150/mes, con el primer mes gratis.</span></p>
       </div>
       <div class="faq-item">
         <h3><span data-en>Do you build websites in Spanish as well as English?</span><span data-es>¿Construyen sitios web en español además de inglés?</span></h3>
@@ -1081,7 +1187,7 @@
       });
     });
 
-    document.querySelectorAll('.section-head').forEach((el) => {
+    document.querySelectorAll('.section-head, .maintenance-callout').forEach((el) => {
       el.classList.add('reveal');
       el.style.transition = revealTransition;
     });
